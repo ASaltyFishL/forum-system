@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易论坛系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/app.js" defer></script>
+    <script src="js/topics.js" defer></script>
+    <script src="js/replies.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<!-- 导航栏 -->
+<nav id="navbar" class="bg-white shadow-md fixed w-full z-10 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <i class="fa fa-comments text-blue-500 text-2xl"></i>
+            <h1 class="text-xl font-bold text-gray-800">简易论坛</h1>
+        </div>
+
+        <div id="nav-links" class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-blue-500 transition-colors" data-page="home">首页</a>
+            <a href="#" class="text-gray-700 hover:text-blue-500 transition-colors" data-page="topics">帖子</a>
+            <div id="auth-links" class="flex items-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-500 transition-colors" data-page="login">登录</a>
+                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors" data-page="register">注册</a>
+            </div>
+            <div id="user-links" class="hidden items-center space-x-4">
+                <span id="username-display" class="text-gray-700"></span>
+                <button id="logout-btn" class="text-gray-700 hover:text-red-500 transition-colors">
+                    <i class="fa fa-sign-out"></i> 退出
+                </button>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+<!-- 主要内容区域 -->
+<main class="flex-grow pt-20 pb-10">
+    <div class="container mx-auto px-4">
+        <!-- 首页 -->
+        <section id="home-page" class="page-content">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">欢迎来到简易论坛</h2>
+                <p class="text-gray-600 mb-4">这是一个基于Spring Boot和MyBatis的简易论坛系统，你可以在这里发表帖子、回复他人的内容。</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md transition-colors" data-page="topics">
+                        <i class="fa fa-list-alt mr-2"></i>浏览帖子
+                    </a>
+                    <a href="#" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-3 rounded-md transition-colors" data-page="register">
+                        <i class="fa fa-user-plus mr-2"></i>注册账号
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">发表帖子</h3>
+                    <p class="text-gray-600">创建新的话题，分享你的想法和见解。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fa fa-comments-o"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">参与讨论</h3>
+                    <p class="text-gray-600">回复感兴趣的话题，与其他用户交流。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="text-purple-500 text-4xl mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">加入社区</h3>
+                    <p class="text-gray-600">注册账号，成为我们社区的一员。</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 帖子列表页 -->
+        <section id="topics-page" class="page-content hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">帖子列表</h2>
+                <button id="create-topic-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors hidden">
+                    <i class="fa fa-plus mr-2"></i>发布新帖
+                </button>
+            </div>
+
+            <div id="topics-container" class="space-y-4">
+                <!-- 帖子将通过JavaScript动态加载 -->
+                <div class="text-center text-gray-500 py-10">
+                    <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>正在加载帖子...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 帖子详情页 -->
+        <section id="topic-detail-page" class="page-content hidden">
+            <div id="topic-detail-container">
+                <!-- 帖子详情将通过JavaScript动态加载 -->
+                <div class="text-center text-gray-500 py-10">
+                    <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>正在加载帖子...</p>
+                </div>
+            </div>
+
+            <div id="reply-form-container" class="mt-8 hidden">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">发表回复</h3>
+                <form id="reply-form" class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-4">
+                        <textarea id="reply-content" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows="4" placeholder="请输入回复内容..."></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition-colors">
+                            <i class="fa fa-paper-plane mr-2"></i>提交回复
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="replies-container" class="mt-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">回复列表</h3>
+                <div class="text-center text-gray-500 py-10">
+                    <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p>正在加载回复...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注册页 -->
+        <section id="register-page" class="page-content hidden">
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">注册账号</h2>
+                    <form id="register-form">
+                        <div class="mb-4">
+                            <label for="register-username" class="block text-gray-700 mb-2">用户名</label>
+                            <input type="text" id="register-username" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入用户名">
+                        </div>
+                        <div class="mb-6">
+                            <label for="register-password" class="block text-gray-700 mb-2">密码</label>
+                            <input type="password" id="register-password" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入密码">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition-colors">
+                            注册
+                        </button>
+                    </form>
+                    <div class="mt-4 text-center">
+                        <p class="text-gray-600">已有账号？<a href="#" class="text-blue-500 hover:underline" data-page="login">立即登录</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 登录页 -->
+        <section id="login-page" class="page-content hidden">
+            <div class="max-w-md mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">用户登录</h2>
+                    <form id="login-form" method="POST" onsubmit="return false;">
+                        <div class="mb-4">
+                            <label for="login-username" class="block text-gray-700 mb-2">用户名</label>
+                            <input type="text" id="login-username" name="username" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入用户名">
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 mb-2">密码</label>
+                            <input type="password" id="login-password" name="password" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入密码">
+                        </div>
+                        <button type="button" onclick="handleLogin()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition-colors">
+                            登录
+                        </button>
+                    </form>
+                    <div class="mt-4 text-center">
+                        <p class="text-gray-600">还没有账号？<a href="#" class="text-blue-500 hover:underline" data-page="register">立即注册</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 创建帖子页 -->
+        <section id="create-topic-page" class="page-content hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">发布新帖</h2>
+                    <form id="create-topic-form">
+                        <div class="mb-4">
+                            <label for="topic-title" class="block text-gray-700 mb-2">标题</label>
+                            <input type="text" id="topic-title" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入帖子标题">
+                        </div>
+                        <div class="mb-6">
+                            <label for="topic-content" class="block text-gray-700 mb-2">内容</label>
+                            <textarea id="topic-content" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows="8" placeholder="请输入帖子内容..."></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="cancel-create-topic" class="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-md transition-colors">
+                                取消
+                            </button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition-colors">
+                                <i class="fa fa-paper-plane mr-2"></i>发布
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 更新帖子页 -->
+        <section id="update-topic-page" class="page-content hidden">
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">编辑帖子</h2>
+                    <form id="update-topic-form">
+                        <input type="hidden" id="update-topic-id">
+                        <div class="mb-4">
+                            <label for="update-topic-title" class="block text-gray-700 mb-2">标题</label>
+                            <input type="text" id="update-topic-title" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="请输入帖子标题">
+                        </div>
+                        <div class="mb-6">
+                            <label for="update-topic-content" class="block text-gray-700 mb-2">内容</label>
+                            <textarea id="update-topic-content" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" rows="8" placeholder="请输入帖子内容..."></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="cancel-update-topic" class="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 px-6 py-2 rounded-md transition-colors">
+                                取消
+                            </button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition-colors">
+                                <i class="fa fa-save mr-2"></i>保存
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-bold mb-4">关于我们</h3>
+                <p class="text-gray-400">这是一个基于Spring Boot和MyBatis的简易论坛系统，致力于提供一个简洁、高效的交流平台。</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-page="home">首页</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-page="topics">帖子</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-page="register">注册</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors" data-page="login">登录</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i class="fa fa-envelope-o mr-2 text-gray-400"></i>
+                        <span class="text-gray-400">contact@example.com</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-phone mr-2 text-gray-400"></i>
+                        <span class="text-gray-400">+86 123 4567 8901</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-700 text-center text-gray-400">
+            <p>&copy; 2025 简易论坛系统. 保留所有权利.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 模态框 -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0" id="modal-content">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800" id="modal-title">提示</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="mb-6" id="modal-body">
+                <!-- 模态框内容将通过JavaScript动态设置 -->
+            </div>
+            <div class="flex justify-end" id="modal-footer">
+                <button id="modal-close-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded transition-colors">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 加载指示器 -->
+<div id="loading-indicator" class="fixed inset-0 bg-white bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="text-center">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mb-4"></div>
+        <p class="text-gray-700" id="loading-text">处理中...</p>
+    </div>
+</div>
+</body>
+</html>

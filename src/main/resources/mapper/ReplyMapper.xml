@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.forum.mapper.ReplyMapper">
+
+    <resultMap id="replyWithUsername" type="com.example.forum.entity.Reply">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="topicId" column="topic_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="username" column="username"/>
+    </resultMap>
+
+    <select id="findByTopicId" resultMap="replyWithUsername">
+        SELECT r.*, u.username
+        FROM reply r
+        LEFT JOIN user u ON r.user_id = u.id
+        WHERE r.topic_id = #{topicId}
+        ORDER BY r.create_time ASC
+    </select>
+
+    <insert id="insert" parameterType="com.example.forum.entity.Reply" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO reply (content, topic_id, user_id, create_time)
+        VALUES (#{content}, #{topicId}, #{userId}, #{createTime})
+    </insert>
+</mapper>
+    

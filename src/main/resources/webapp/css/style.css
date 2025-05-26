@@ -1,0 +1,36 @@
+@tailwind utilities;
+
+/* 自定义工具类 */
+@layer utilities {
+    .content-auto {
+        content-visibility: auto;
+    }
+    .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    }
+}
+
+/* 导航栏滚动效果 */
+.scroll-down {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
+.scroll-up {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 模态框动画 */
+.modal-active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
