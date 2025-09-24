@@ -1,4 +1,3 @@
-com\example\forum\entity\BlogTag.class
 com\example\forum\service\impl\BlogServiceImpl.class
 com\example\forum\entity\Tag.class
 com\example\forum\entity\Category.class

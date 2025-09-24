@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface BlogMapper {
@@ -50,5 +49,8 @@ public interface BlogMapper {
     // 分页查询博客总数
     int countByPage(@Param("categoryId") Long categoryId, @Param("userId") Long userId, 
                    @Param("keyword") String keyword, @Param("published") Boolean published);
+    
+    // 根据ID查询博客（包含标签）
+    Blog findByIdWithTags(@Param("id") Long id);
 }
     

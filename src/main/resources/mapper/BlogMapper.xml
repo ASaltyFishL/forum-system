@@ -113,6 +113,37 @@
         ORDER BY b.create_time DESC
         LIMIT #{offset}, #{pageSize}
     </select>
+    
+    <!-- 查询博客及其标签 -->
+    <select id="findByIdWithTags" resultMap="BlogWithTagsResultMap" parameterType="java.lang.Long">
+        SELECT b.*, u.username, c.name as category_name, t.id as tag_id, t.name as tag_name
+        FROM blog b
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        LEFT JOIN blog_tag bt ON b.id = bt.blog_id
+        LEFT JOIN tag t ON bt.tag_id = t.id
+        WHERE b.id = #{id}
+    </select>
+    
+    <resultMap id="BlogWithTagsResultMap" type="com.example.forum.entity.Blog">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="summary" property="summary"/>
+        <result column="user_id" property="userId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="comment_count" property="commentCount"/>
+        <result column="published" property="published"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="username" property="username"/>
+        <result column="category_name" property="categoryName"/>
+        <collection property="tags" ofType="com.example.forum.entity.Tag">
+            <id column="tag_id" property="id"/>
+            <result column="tag_name" property="name"/>
+        </collection>
+    </resultMap>
 
     <select id="countByPage" resultType="java.lang.Integer" parameterType="map">
         SELECT COUNT(*) FROM blog b

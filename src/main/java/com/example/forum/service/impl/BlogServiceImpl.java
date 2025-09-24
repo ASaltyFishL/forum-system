@@ -39,6 +39,15 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public Blog findByIdWithTags(Long id) {
+        Blog blog = blogMapper.findByIdWithTags(id);
+        if (blog == null) {
+            throw new RuntimeException("博客不存在");
+        }
+        return blog;
+    }
+
+    @Override
     public List<Blog> findByUserId(Long userId) {
         return blogMapper.findByUserId(userId);
     }
@@ -188,5 +197,19 @@ public class BlogServiceImpl implements BlogService {
         result.put("totalPages", (total + pageSize - 1) / pageSize);
         
         return result;
+    }
+
+    @Override
+    @Transactional
+    public void updateBlogTags(Long blogId, List<Tag> tags) {
+        // 先删除原有的标签关联
+        blogTagMapper.deleteByBlogId(blogId);
+        
+        // 添加新的标签关联
+        if (tags != null && !tags.isEmpty()) {
+            for (Tag tag : tags) {
+                blogTagMapper.insert(blogId, tag.getId());
+            }
+        }
     }
 }

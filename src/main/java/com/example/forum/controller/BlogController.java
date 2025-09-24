@@ -54,13 +54,13 @@ public class BlogController {
 
     @GetMapping("/{id}")
     public Result<Map<String, Object>> get(@PathVariable Long id) {
-        Blog blog = blogService.findById(id);
+        Blog blog = blogService.findByIdWithTags(id);
         // 增加浏览量
         blogService.incrementViewCount(id);
         
         Map<String, Object> result = new HashMap<>();
         result.put("blog", blog);
-        result.put("tags", tagService.findByBlogId(id));
+        result.put("tags", blog.getTags()); // 直接从blog对象获取标签
         
         return Result.success("获取成功", result);
     }
@@ -77,6 +77,12 @@ public class BlogController {
             }
             
             Blog createdBlog = blogService.create(blog);
+            
+            // 处理标签关联
+            if (blog.getTags() != null && !blog.getTags().isEmpty()) {
+                blogService.updateBlogTags(createdBlog.getId(), blog.getTags());
+            }
+            
             logger.info("创建博客成功: {}", createdBlog);
             return Result.success("创建成功", createdBlog);
         } catch (Exception e) {
@@ -87,10 +93,21 @@ public class BlogController {
 
     @PutMapping("/{id}")
     public Result<Blog> update(@PathVariable Long id, @Valid @RequestBody Blog blog) {
-        blog.setId(id);
-        Blog updatedBlog = blogService.update(blog);
-        logger.info("更新博客成功: {}", blog);
-        return Result.success("更新成功", updatedBlog);
+        try {
+            blog.setId(id);
+            Blog updatedBlog = blogService.update(blog);
+            
+            // 处理标签关联
+            if (blog.getTags() != null) {
+                blogService.updateBlogTags(id, blog.getTags());
+            }
+            
+            logger.info("更新博客成功: {}", updatedBlog);
+            return Result.success("更新成功", updatedBlog);
+        } catch (Exception e) {
+            logger.error("更新博客失败: {}", e.getMessage(), e);
+            return Result.error("更新博客失败: " + e.getMessage());
+        }
     }
     
     @GetMapping("/{id}/comments")

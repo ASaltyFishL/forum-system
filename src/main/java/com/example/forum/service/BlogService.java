@@ -1,6 +1,7 @@
 package com.example.forum.service;
 
 import com.example.forum.entity.Blog;
+import com.example.forum.entity.Tag;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,9 @@ public interface BlogService {
     
     // 根据ID查询博客
     Blog findById(Long id);
+    
+    // 根据ID查询博客（包含标签）
+    Blog findByIdWithTags(Long id);
     
     // 根据用户ID查询博客
     List<Blog> findByUserId(Long userId);
@@ -40,4 +44,7 @@ public interface BlogService {
     
     // 分页查询博客
     Map<String, Object> findByPage(int pageNum, int pageSize, Long categoryId, Long userId, String keyword);
+    
+    // 更新博客标签关联
+    void updateBlogTags(Long blogId, List<Tag> tags);
 }

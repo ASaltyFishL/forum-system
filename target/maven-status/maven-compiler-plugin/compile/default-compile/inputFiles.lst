@@ -1,6 +1,6 @@
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\DataInitializer.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\config\SecurityConfig.java
-C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\entity\BlogTag.java
+C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\exception\GlobalExceptionHandler.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\mapper\BlogMapper.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\service\TagService.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\entity\User.java
@@ -14,6 +14,7 @@ C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\controller\UserController.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\entity\Tag.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\service\CategoryService.java
+C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\common\Result.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\mapper\CommentMapper.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\service\CommentService.java
 C:\Users\23665\Desktop\StudyProject\forum-system\src\main\java\com\example\forum\service\impl\CategoryServiceImpl.java
