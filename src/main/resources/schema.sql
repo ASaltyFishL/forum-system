@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `avatar` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `bio` varchar(500) DEFAULT NULL,
+  `role` varchar(20) DEFAULT 'USER',
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
   PRIMARY KEY (`id`),

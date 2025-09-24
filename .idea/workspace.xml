@@ -4,24 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V2.2 增加了标签和分类">
+    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V2.3 增加了标签和分类">
       <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/mapper/BlogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/mapper/BlogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/BlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/BlogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/BlogMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/BlogService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/BlogService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/CommentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +125,7 @@
       <updated>1758549291881</updated>
       <workItem from="1758549295011" duration="124000" />
       <workItem from="1758691811355" duration="7551000" />
-      <workItem from="1758701447174" duration="1540000" />
+      <workItem from="1758701447174" duration="2299000" />
     </task>
     <task id="LOCAL-00001" summary="V1.0">
       <option name="closed" value="true" />
@@ -213,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758702465860</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="V2.3 增加了标签和分类">
+      <option name="closed" value="true" />
+      <created>1758703244030</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1758703244030</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +251,7 @@
     <MESSAGE value="V2.0 实现了基本的用户注册与登录，帖子发布与修改" />
     <MESSAGE value="V2.1 实现了基本的用户注册与登录，帖子发布与修改" />
     <MESSAGE value="V2.2 增加了标签和分类" />
-    <option name="LAST_COMMIT_MESSAGE" value="V2.2 增加了标签和分类" />
+    <MESSAGE value="V2.3 增加了标签和分类" />
+    <option name="LAST_COMMIT_MESSAGE" value="V2.3 增加了标签和分类" />
   </component>
 </project>

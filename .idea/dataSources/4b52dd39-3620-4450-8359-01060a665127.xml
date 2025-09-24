@@ -995,37 +995,48 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Charset>utf8mb4</Charset>
     </collation>
     <schema id="288" parent="1" name="forum">
-      <LastIntrospectionLocalTimestamp>2025-09-24.05:31:57</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="hotel">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="290" parent="1" name="information_schema">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="291" parent="1" name="mall">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:55</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="mysql">
+      <Grants>user|||mysql.session|localhost|SELECT|G</Grants>
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="293" parent="1" name="performance_schema">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="294" parent="1" name="ruoyi_vue">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="295" parent="1" name="ry-vue">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="296" parent="1" name="sky_take_out">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="297" parent="1" name="springboot9997a">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="298" parent="1" name="tlias">
+      <LastIntrospectionLocalTimestamp>2025-09-24.09:06:56</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="299" parent="1" name="mysql.infoschema">
@@ -1382,32 +1393,37 @@ tag_id</ColNames>
       <Position>7</Position>
       <StoredType>varchar(500)|0s</StoredType>
     </column>
-    <column id="373" parent="308" name="create_time">
-      <NotNull>1</NotNull>
+    <column id="373" parent="308" name="role">
+      <DefaultExpression>&apos;USER&apos;</DefaultExpression>
       <Position>8</Position>
-      <StoredType>datetime|0s</StoredType>
+      <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="374" parent="308" name="update_time">
+    <column id="374" parent="308" name="create_time">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <index id="375" parent="308" name="PRIMARY">
+    <column id="375" parent="308" name="update_time">
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+      <StoredType>datetime|0s</StoredType>
+    </column>
+    <index id="376" parent="308" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="376" parent="308" name="UK_username">
+    <index id="377" parent="308" name="UK_username">
       <ColNames>username</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="377" parent="308" name="PRIMARY">
+    <key id="378" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="378" parent="308" name="UK_username">
+    <key id="379" parent="308" name="UK_username">
       <UnderlyingIndexName>UK_username</UnderlyingIndexName>
     </key>
   </database-model>

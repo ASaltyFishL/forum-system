@@ -36,6 +36,8 @@ public class User implements Serializable {
 
     private String bio;
 
+    private String role = "USER"; // 用户角色：USER(普通用户), ADMIN(管理员)
+
     private Date createTime;
 
     private Date updateTime;

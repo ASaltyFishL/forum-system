@@ -10,6 +10,7 @@
         <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>
         <result column="bio" property="bio" jdbcType="VARCHAR"/>
+        <result column="role" property="role" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -19,8 +20,8 @@
     </select>
 
     <insert id="insert" parameterType="com.example.forum.entity.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO user (username, password, nickname, avatar, email, bio, create_time, update_time)
-        VALUES (#{username}, #{password}, #{nickname}, #{avatar}, #{email}, #{bio}, 
+        INSERT INTO user (username, password, nickname, avatar, email, bio, role, create_time, update_time)
+        VALUES (#{username}, #{password}, #{nickname}, #{avatar}, #{email}, #{bio}, #{role},
                 #{createTime}, #{updateTime})
     </insert>
 
@@ -40,6 +41,7 @@
             avatar = #{avatar},
             email = #{email},
             bio = #{bio},
+            role = #{role},
             update_time = #{updateTime}
         WHERE id = #{id}
     </update>

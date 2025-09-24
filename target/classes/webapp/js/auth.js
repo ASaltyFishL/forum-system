@@ -129,6 +129,7 @@ function handleLogin() {
             }
             
             localStorage.setItem('user', JSON.stringify(data.data));
+            localStorage.setItem('currentUser', JSON.stringify(data.data)); // 保存到currentUser供其他页面使用
             console.log('保存到localStorage的用户信息:', localStorage.getItem('user'));
             
             // 更新UI
@@ -179,12 +180,20 @@ function updateAuthUI(isLoggedIn) {
     const createBlogBtn = document.getElementById('create-blog-btn'); // 改为blog命名
     const commentFormContainer = document.getElementById('comment-form-container'); // 改为comment命名
     const usernameDisplay = document.getElementById('username-display');
+    const adminLink = document.getElementById('admin-link');
 
     if (isLoggedIn) {
         const user = JSON.parse(localStorage.getItem('user'));
 
         if (usernameDisplay) {
             usernameDisplay.textContent = user.username;
+        }
+
+        // 检查是否为管理员
+        if (adminLink && user.role === 'ADMIN') {
+            adminLink.classList.remove('hidden');
+        } else if (adminLink) {
+            adminLink.classList.add('hidden');
         }
 
         if (authLinks) {
