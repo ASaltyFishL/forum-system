@@ -1,0 +1,139 @@
+<changelist name="在变基之前未提交的更改_[更改]" date="1758701347448" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/shelved.patch" />
+  <option name="DESCRIPTION" value="在变基之前未提交的更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/CommentService.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/CommentService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CommentService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/UserController$LoginRequest.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/UserController$LoginRequest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/UserController$LoginRequest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/mapper/TagMapper.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/mapper/TagMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/TagMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/CommentController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/CommentController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CommentController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/impl/TagServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/impl/TagServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/TagServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/impl/BlogServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/impl/BlogServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/BlogServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/impl/CategoryServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/impl/CategoryServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CategoryServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/entity/Category.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/entity/Category.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/Category.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/TagService.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/TagService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/TagService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/impl/UserServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/impl/UserServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/UserServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/BlogController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/BlogController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/BlogController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/entity/Blog.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/entity/Blog.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/Blog.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/mapper/UserMapper.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/mapper/UserMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/UserMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/mapper/BlogMapper.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/mapper/BlogMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/BlogMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/CategoryService.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/CategoryService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CategoryService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/TagController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/TagController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/TagController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/DataInitializer.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/DataInitializer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/DataInitializer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/mapper/CategoryMapper.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/mapper/CategoryMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CategoryMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/BlogService.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/BlogService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/BlogService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/impl/CommentServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/impl/CommentServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CommentServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/entity/Comment.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/entity/Comment.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/Comment.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/entity/Tag.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/entity/Tag.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/Tag.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/service/UserService.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/service/UserService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/UserService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/entity/User.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/entity/User.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/User.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/mapper/CommentMapper.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/mapper/CommentMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CommentMapper.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/UserController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/UserController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/UserController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/forum/controller/CategoryController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/forum/controller/CategoryController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]/CategoryController.class" />
+  </binary>
+</changelist>

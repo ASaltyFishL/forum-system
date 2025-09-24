@@ -4,54 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V1.5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/TagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/TagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/BlogTag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/replies.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/topics.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/BlogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/BlogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/CategoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/CategoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/CommentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/TagController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/TagController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Blog.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Blog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/BlogTag.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Tag.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/Tag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/replies.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/topics.js" beforeDir="false" />
+    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V2.0 实现了基本的用户注册与登录，帖子发布与修改">
+      <change beforePath="$PROJECT_DIR$/ARCHITECTURE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/common/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/common/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/exception/GlobalExceptionHandler.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +19,22 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="V2.0 实现了基本的用户注册与登录，帖子发布与修改" />
+        <option name="rewordedMessage" value="V2.0 实现了基本的用户注册与登录，帖子发布与修改" />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="9b854e9ecf72ad419d037ad808dfefae85982557" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -85,35 +55,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ForumApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/23665/Desktop/StudyProject/forum-system",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ForumApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/23665/Desktop/StudyProject/forum-system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ForumApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="forum-system" />
@@ -140,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758549291881</updated>
       <workItem from="1758549295011" duration="124000" />
-      <workItem from="1758691811355" duration="7325000" />
+      <workItem from="1758691811355" duration="7551000" />
     </task>
     <task id="LOCAL-00001" summary="V1.0">
       <option name="closed" value="true" />
@@ -198,7 +168,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758699532304</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="V2.0 实现了基本的用户注册与登录，帖子发布与修改">
+      <option name="closed" value="true" />
+      <created>1758701291781</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701291781</updated>
+    </task>
+    <task id="LOCAL-00009" summary="V2.0 实现了基本的用户注册与登录，帖子发布与修改">
+      <option name="closed" value="true" />
+      <created>1758701304108</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1758701304108</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +209,7 @@
     <MESSAGE value="V1.3" />
     <MESSAGE value="V1.4" />
     <MESSAGE value="V1.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.5" />
+    <MESSAGE value="V2.0 实现了基本的用户注册与登录，帖子发布与修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="V2.0 实现了基本的用户注册与登录，帖子发布与修改" />
   </component>
 </project>
