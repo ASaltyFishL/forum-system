@@ -17,7 +17,7 @@
     </resultMap>
     
     <select id="findAll" resultMap="BaseResultMap">
-        SELECT * FROM blog WHERE published = true ORDER BY create_time DESC
+        SELECT * FROM blog ORDER BY create_time DESC
     </select>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -25,17 +25,17 @@
     </select>
     
     <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM blog WHERE user_id = #{userId} AND published = true ORDER BY create_time DESC
+        SELECT * FROM blog WHERE user_id = #{userId} ORDER BY create_time DESC
     </select>
     
     <select id="findByCategoryId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM blog WHERE category_id = #{categoryId} AND published = true ORDER BY create_time DESC
+        SELECT * FROM blog WHERE category_id = #{categoryId} ORDER BY create_time DESC
     </select>
     
     <select id="findByTagId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT b.* FROM blog b
         JOIN blog_tag bt ON b.id = bt.blog_id
-        WHERE bt.tag_id = #{tagId} AND b.published = true
+        WHERE bt.tag_id = #{tagId}
         ORDER BY b.create_time DESC
     </select>
     
@@ -83,14 +83,11 @@
             <if test="keyword != null and keyword != ''">
                 AND (title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%'))
             </if>
-            <if test="published != null">
-                AND published = #{published}
-            </if>
         </where>
         ORDER BY create_time DESC
         LIMIT #{offset}, #{pageSize}
     </select>
-    
+
     <select id="countByPage" resultType="java.lang.Integer" parameterType="map">
         SELECT COUNT(*) FROM blog
         <where>
@@ -102,9 +99,6 @@
             </if>
             <if test="keyword != null and keyword != ''">
                 AND (title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%'))
-            </if>
-            <if test="published != null">
-                AND published = #{published}
             </if>
         </where>
     </select>

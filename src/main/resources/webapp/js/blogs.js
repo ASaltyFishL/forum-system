@@ -27,9 +27,10 @@ function loadBlogs() {
     `;
     
     // 发送请求获取博客列表
+    console.log('发送API请求到 /api/blogs');
     fetch('/api/blogs')
         .then(response => {
-            console.log('收到博客列表响应:', response);
+            console.log('收到博客列表响应:', response.status, response.statusText);
             if (!response.ok) {
                 throw new Error('获取博客列表失败: ' + response.status);
             }
@@ -38,7 +39,10 @@ function loadBlogs() {
         .then(data => {
             console.log('博客列表数据:', data);
             if (data.success) {
-                renderBlogs(data.data);
+                console.log('分页信息:', data.data);
+                console.log('博客数量:', data.data.data.length);
+                console.log('博客详情:', data.data.data);
+                renderBlogs(data.data.data);
             } else {
                 throw new Error(data.message || '获取博客列表失败');
             }
@@ -55,6 +59,19 @@ function loadBlogs() {
                 </div>
             `;
         });
+}
+
+// 查看博客详情
+function viewBlog(blogId) {
+    console.log('查看博客详情，ID:', blogId);
+    // 保存当前博客ID到本地存储
+    localStorage.setItem('currentBlogId', blogId);
+    // 切换到博客详情页面
+    showPage('blog-detail');
+    // 加载博客详情
+    loadBlogDetail(blogId);
+    // 加载评论列表
+    loadComments(blogId);
 }
 
 // 格式化日期函数，确保安全显示日期
@@ -139,31 +156,30 @@ function truncateText(text, length) {
     return text.substring(0, length) + '...';
 }
 
-// 查看博客详情
-function viewBlog(blogId) {
-    // 保存当前博客ID到本地存储
-    localStorage.setItem('currentBlogId', blogId);
-    // 切换到博客详情页面
-    showPage('blog-detail');
-    // 加载博客详情
-    loadBlogDetail(blogId);
-    // 加载评论列表
-    loadComments(blogId);
-}
-
 // 加载博客详情
 function loadBlogDetail(blogId) {
+    console.log('开始加载博客详情，ID:', blogId);
     const blogDetailContainer = document.getElementById('blog-detail-container');
+    
+    console.log('博客详情容器元素:', blogDetailContainer);
+    
+    if (!blogDetailContainer) {
+        console.error('找不到博客详情容器元素');
+        return;
+    }
     
     if (!blogId) {
         blogId = localStorage.getItem('currentBlogId');
+        console.log('从localStorage获取博客ID:', blogId);
         if (!blogId) {
+            console.error('没有博客ID');
             blogDetailContainer.innerHTML = '没有选择博客';
             return;
         }
     }
     
     // 显示加载中状态
+    console.log('显示加载中状态');
     blogDetailContainer.innerHTML = `
         <div class="text-center text-gray-500 py-10">
             <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
@@ -171,17 +187,23 @@ function loadBlogDetail(blogId) {
         </div>
     `;
     
+    console.log('发送API请求到 /api/blogs/' + blogId);
     fetch(`/api/blogs/${blogId}`)
-        .then(response => response.json())
+        .then(response => {
+            console.log('收到博客详情响应:', response.status, response.statusText);
+            return response.json();
+        })
         .then(data => {
+            console.log('博客详情数据:', data);
             if (data.success) {
+                console.log('成功获取博客详情，准备渲染:', data.data);
                 renderBlogDetail(data.data);
             } else {
                 throw new Error(data.message || '加载博客详情失败');
             }
         })
         .catch(error => {
-            console.error('Error loading blog:', error);
+            console.error('加载博客详情错误:', error);
             blogDetailContainer.innerHTML = `
                 <div class="text-center text-red-500 py-10">
                     <i class="fa fa-exclamation-circle text-2xl mb-2"></i>

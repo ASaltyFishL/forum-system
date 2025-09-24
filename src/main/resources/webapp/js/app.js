@@ -70,6 +70,50 @@ function showPage(pageName) {
     if (pageName === 'blogs') {
         loadBlogs();
     }
+    // 如果是博客详情页面，加载博客详情
+    else if (pageName === 'blog-detail') {
+        // 从localStorage获取博客ID，如果没有则尝试获取第一篇博客的ID
+        let blogId = localStorage.getItem('currentBlogId');
+        if (!blogId) {
+            console.log('没有找到当前博客ID，尝试获取第一篇博客的ID...');
+            
+            // 先尝试获取第一篇博客的ID
+            fetch('/api/blogs?page=1&pageSize=1')
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('获取博客列表失败');
+                })
+                .then(data => {
+                    if (data.success && data.data && data.data.length > 0) {
+                        blogId = data.data[0].id;
+                        localStorage.setItem('currentBlogId', blogId);
+                        loadBlogDetail(blogId);
+                    } else {
+                        // 如果没有博客，显示提示信息
+                        const blogDetailContainer = document.getElementById('blog-detail-container');
+                        if (blogDetailContainer) {
+                            blogDetailContainer.innerHTML = `
+                                <div class="text-center text-gray-500 py-10">
+                                    <i class="fa fa-file-text-o text-2xl mb-2"></i>
+                                    <p>暂无博客内容</p>
+                                    <button onclick="showPage('blogs')" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                                        <i class="fa fa-list mr-2"></i>查看博客列表
+                                    </button>
+                                </div>
+                            `;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('获取博客ID失败:', error);
+                    loadBlogDetail(); // 调用原始函数，让它处理没有ID的情况
+                });
+        } else {
+            loadBlogDetail(blogId);
+        }
+    }
 }
 
 // 初始化模态框

@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V1.1">
-      <change afterPath="$PROJECT_DIR$/.idea/GrepConsole.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V1.21">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/mapper/BlogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/mapper/BlogMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/BlogMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/BlogMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
@@ -105,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758549291881</updated>
       <workItem from="1758549295011" duration="124000" />
-      <workItem from="1758691811355" duration="2204000" />
+      <workItem from="1758691811355" duration="4095000" />
     </task>
     <task id="LOCAL-00001" summary="V1.0">
       <option name="closed" value="true" />
@@ -123,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758693585159</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="V1.2">
+      <option name="closed" value="true" />
+      <created>1758694105460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758694105460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="V1.21">
+      <option name="closed" value="true" />
+      <created>1758695312133</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758695312133</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +160,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.1" />
+    <MESSAGE value="V1.2" />
+    <MESSAGE value="V1.21" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.21" />
   </component>
 </project>
