@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.forum.mapper.BlogTagMapper">
+    
+    <insert id="insert" parameterType="map">
+        INSERT INTO blog_tag (blog_id, tag_id) VALUES (#{blogId}, #{tagId})
+    </insert>
+    
+    <delete id="deleteByBlogId" parameterType="java.lang.Long">
+        DELETE FROM blog_tag WHERE blog_id = #{blogId}
+    </delete>
+    
+    <delete id="deleteByTagId" parameterType="java.lang.Long">
+        DELETE FROM blog_tag WHERE tag_id = #{tagId}
+    </delete>
+    
+    <select id="findBlogIdsByTagId" resultType="java.lang.Long" parameterType="java.lang.Long">
+        SELECT blog_id FROM blog_tag WHERE tag_id = #{tagId}
+    </select>
+    
+    <insert id="batchInsert" parameterType="map">
+        INSERT INTO blog_tag (blog_id, tag_id)
+        VALUES
+        <foreach collection="tagIds" item="tagId" separator=",">
+            (#{blogId}, #{tagId})
+        </foreach>
+    </insert>
+</mapper>

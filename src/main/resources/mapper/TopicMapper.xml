@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.forum.mapper.TopicMapper">
+
+    <resultMap id="topicWithUsername" type="com.example.forum.entity.Topic">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="userId" column="user_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="username" column="username"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="topicWithUsername">
+        SELECT t.*, u.username
+        FROM topic t
+        LEFT JOIN user u ON t.user_id = u.id
+        ORDER BY t.update_time DESC
+    </select>
+
+    <select id="findById" resultMap="topicWithUsername">
+        SELECT t.*, u.username
+        FROM topic t
+        LEFT JOIN user u ON t.user_id = u.id
+        WHERE t.id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.example.forum.entity.Topic" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO topic (title, content, user_id, create_time, update_time)
+        VALUES (#{title}, #{content}, #{userId}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.example.forum.entity.Topic">
+        UPDATE topic
+        SET title = #{title},
+            content = #{content},
+            update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM topic WHERE id = #{id}
+    </delete>
+</mapper>
+    
