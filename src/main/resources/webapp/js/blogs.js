@@ -9,6 +9,223 @@ function getCurrentUserId() {
     return null;
 }
 
+// 初始化博客相关功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取创建博客按钮
+    const createBlogBtn = document.getElementById('create-blog-btn');
+    if (createBlogBtn) {
+        createBlogBtn.addEventListener('click', showCreateBlogForm);
+    }
+
+    // 为创建博客页面添加提交事件
+    const createTopicForm = document.getElementById('create-topic-form');
+    if (createTopicForm) {
+        createTopicForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleCreateBlog();
+        });
+    }
+
+    // 为更新博客页面添加提交事件
+    const updateTopicForm = document.getElementById('update-topic-form');
+    if (updateTopicForm) {
+        updateTopicForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleUpdateBlog();
+        });
+    }
+
+    // 取消创建博客
+    const cancelCreateTopic = document.getElementById('cancel-create-topic');
+    if (cancelCreateTopic) {
+        cancelCreateTopic.addEventListener('click', function() {
+            showPage('blogs');
+        });
+    }
+
+    // 取消更新博客
+    const cancelUpdateTopic = document.getElementById('cancel-update-topic');
+    if (cancelUpdateTopic) {
+        cancelUpdateTopic.addEventListener('click', function() {
+            const blogId = document.getElementById('update-topic-id').value;
+            viewBlog(blogId);
+        });
+    }
+});
+
+// 显示创建博客表单
+function showCreateBlogForm() {
+    // 清空表单
+    document.getElementById('topic-title').value = '';
+    document.getElementById('topic-content').value = '';
+    // 切换到创建页面
+    showPage('create-topic');
+}
+
+// 显示编辑博客表单
+function showEditBlogForm(blogId, title, content) {
+    document.getElementById('update-topic-id').value = blogId;
+    document.getElementById('update-topic-title').value = title;
+    document.getElementById('update-topic-content').value = content;
+    // 切换到编辑页面
+    showPage('update-topic');
+}
+
+// 创建新博客
+function handleCreateBlog() {
+    const title = document.getElementById('topic-title').value;
+    const content = document.getElementById('topic-content').value;
+    const userId = getCurrentUserId();
+
+    if (!userId) {
+        showModal('创建失败', '请先登录再发布博客');
+        return;
+    }
+
+    if (!title.trim()) {
+        showModal('创建失败', '标题不能为空');
+        return;
+    }
+
+    if (!content.trim()) {
+        showModal('创建失败', '内容不能为空');
+        return;
+    }
+
+    showLoading('正在发布...');
+
+    fetch(`/api/blogs?userId=${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: title,
+            content: content
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('创建博客失败：' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        hideLoading();
+        if (data.success) {
+            showModal('创建成功', '博客已成功发布', function() {
+                // 跳转到博客列表页
+                showPage('blogs');
+            });
+        } else {
+            throw new Error(data.message || '创建博客失败');
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        showModal('创建失败', error.message);
+        console.error('创建博客错误:', error);
+    });
+}
+
+// 更新博客
+function handleUpdateBlog() {
+    const blogId = document.getElementById('update-topic-id').value;
+    const title = document.getElementById('update-topic-title').value;
+    const content = document.getElementById('update-topic-content').value;
+    const userId = getCurrentUserId();
+
+    if (!userId) {
+        showModal('更新失败', '请先登录');
+        return;
+    }
+
+    if (!title.trim()) {
+        showModal('更新失败', '标题不能为空');
+        return;
+    }
+
+    if (!content.trim()) {
+        showModal('更新失败', '内容不能为空');
+        return;
+    }
+
+    showLoading('正在更新...');
+
+    fetch(`/api/blogs/${blogId}?userId=${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            title: title,
+            content: content
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('更新博客失败：' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        hideLoading();
+        if (data.success) {
+            showModal('更新成功', '博客已成功更新', function() {
+                viewBlog(blogId);
+            });
+        } else {
+            throw new Error(data.message || '更新博客失败');
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        showModal('更新失败', error.message);
+        console.error('更新博客错误:', error);
+    });
+}
+
+// 删除博客
+function deleteBlog(blogId) {
+    const userId = getCurrentUserId();
+    
+    if (!userId) {
+        showModal('删除失败', '请先登录');
+        return;
+    }
+    
+    if (!confirm('确定要删除这个博客吗？此操作不可撤销。')) {
+        return;
+    }
+    
+    showLoading('正在删除...');
+    
+    fetch(`/api/blogs/${blogId}?userId=${userId}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('删除博客失败：' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        hideLoading();
+        if (data.success) {
+            showModal('删除成功', '博客已成功删除', function() {
+                showPage('blogs');
+            });
+        } else {
+            throw new Error(data.message || '删除博客失败');
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        showModal('删除失败', error.message);
+        console.error('删除博客错误:', error);
+    });
+}
+
 // 加载所有博客列表
 function loadBlogs() {
     console.log('正在加载博客列表...');
