@@ -150,3 +150,96 @@ function viewBlog(blogId) {
     // 加载评论列表
     loadComments(blogId);
 }
+
+// 加载博客详情
+function loadBlogDetail(blogId) {
+    const blogDetailContainer = document.getElementById('blog-detail-container');
+    
+    if (!blogId) {
+        blogId = localStorage.getItem('currentBlogId');
+        if (!blogId) {
+            blogDetailContainer.innerHTML = '没有选择博客';
+            return;
+        }
+    }
+    
+    // 显示加载中状态
+    blogDetailContainer.innerHTML = `
+        <div class="text-center text-gray-500 py-10">
+            <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
+            <p>正在加载博客详情...</p>
+        </div>
+    `;
+    
+    fetch(`/api/blogs/${blogId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                renderBlogDetail(data.data);
+            } else {
+                throw new Error(data.message || '加载博客详情失败');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading blog:', error);
+            blogDetailContainer.innerHTML = `
+                <div class="text-center text-red-500 py-10">
+                    <i class="fa fa-exclamation-circle text-2xl mb-2"></i>
+                    <p>加载博客失败: ${error.message}</p>
+                </div>
+            `;
+        });
+}
+
+// 渲染博客详情
+function renderBlogDetail(blog) {
+    const blogDetailContainer = document.getElementById('blog-detail-container');
+    const currentUserId = getCurrentUserId();
+    console.log('当前用户ID:', currentUserId);
+    console.log('博客作者ID:', blog.userId);
+    const isAuthor = currentUserId && currentUserId == blog.userId;
+    
+    // 使用blog.username，如果为空则显示"未知用户"
+    const username = blog.username || '未知用户';
+    
+    const html = `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">${blog.title}</h2>
+                    ${isAuthor ? `
+                        <div class="flex space-x-2">
+                            <button onclick="showEditBlogForm(${blog.id}, '${escapeHtml(blog.title)}', '${escapeHtml(blog.content)}')" class="text-blue-500 hover:text-blue-700">
+                                <i class="fa fa-edit"></i> 编辑
+                            </button>
+                            <button onclick="deleteBlog(${blog.id})" class="text-red-500 hover:text-red-700">
+                                <i class="fa fa-trash"></i> 删除
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+                <div class="mb-4 text-gray-600 whitespace-pre-wrap">${blog.content}</div>
+                <div class="flex justify-between items-center text-sm text-gray-500">
+                    <span>
+                        <i class="fa fa-user mr-1"></i> 作者: ${username}
+                    </span>
+                    <span>
+                        <i class="fa fa-clock-o mr-1"></i> ${formatDate(blog.createTime)}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    blogDetailContainer.innerHTML = html;
+}
+
+// 转义HTML特殊字符的函数
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
