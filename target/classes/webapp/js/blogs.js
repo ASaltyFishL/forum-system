@@ -101,7 +101,10 @@ function handleCreateBlog() {
         },
         body: JSON.stringify({
             title: title,
-            content: content
+            content: content,
+            categoryId: 1, // 默认分类ID，后续可以改进为用户选择
+            summary: content.substring(0, 100) + '...', // 自动生成摘要
+            tags: [] // 暂时为空数组，后续可以添加标签功能
         })
     })
     .then(response => {
@@ -159,7 +162,10 @@ function handleUpdateBlog() {
         },
         body: JSON.stringify({
             title: title,
-            content: content
+            content: content,
+            categoryId: 1, // 默认分类ID
+            summary: content.substring(0, 100) + '...', // 自动生成摘要
+            tags: [] // 暂时为空数组
         })
     })
     .then(response => {

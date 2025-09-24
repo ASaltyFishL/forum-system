@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V1.3">
+    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V1.4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/service/impl/BlogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/BlogServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/BlogMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/forum-system-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758549291881</updated>
       <workItem from="1758549295011" duration="124000" />
-      <workItem from="1758691811355" duration="4394000" />
+      <workItem from="1758691811355" duration="5672000" />
     </task>
     <task id="LOCAL-00001" summary="V1.0">
       <option name="closed" value="true" />
@@ -142,7 +132,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758695312133</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="V1.3">
+      <option name="closed" value="true" />
+      <created>1758697731034</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758697731034</updated>
+    </task>
+    <task id="LOCAL-00006" summary="V1.4">
+      <option name="closed" value="true" />
+      <created>1758698427759</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758698427759</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +171,7 @@
     <MESSAGE value="V1.2" />
     <MESSAGE value="V1.21" />
     <MESSAGE value="V1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.3" />
+    <MESSAGE value="V1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.4" />
   </component>
 </project>
