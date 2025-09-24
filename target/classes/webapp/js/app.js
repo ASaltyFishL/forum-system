@@ -52,6 +52,22 @@ function initPageNavigation() {
             showPage(pageName);
         });
     });
+    
+    // 返回按钮事件处理
+    const backToBlogsBtn = document.getElementById('back-to-blogs');
+    if (backToBlogsBtn) {
+        backToBlogsBtn.addEventListener('click', function() {
+            showPage('blogs');
+        });
+    }
+    
+    // 博客列表页返回主页按钮
+    const backToHomeBtn = document.getElementById('back-to-home');
+    if (backToHomeBtn) {
+        backToHomeBtn.addEventListener('click', function() {
+            showPage('home');
+        });
+    }
 }
 
 // 显示指定的页面

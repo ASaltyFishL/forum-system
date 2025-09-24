@@ -10,10 +10,17 @@
         <result column="parent_id" property="parentId"/>
         <result column="approved" property="approved"/>
         <result column="create_time" property="createTime"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="blogTitle" property="blogTitle"/>
     </resultMap>
     
     <select id="findByBlogId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM comment WHERE blog_id = #{blogId} AND approved = true ORDER BY create_time DESC
+        SELECT c.*, u.username, u.nickname 
+        FROM comment c 
+        LEFT JOIN user u ON c.user_id = u.id 
+        WHERE c.blog_id = #{blogId} AND c.approved = true 
+        ORDER BY c.create_time DESC
     </select>
     
     <select id="findByParentId" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -22,6 +29,23 @@
     
     <select id="findByApprovedFalse" resultMap="BaseResultMap">
         SELECT * FROM comment WHERE approved = false ORDER BY create_time DESC
+    </select>
+    
+    <select id="findByApproved" resultMap="BaseResultMap" parameterType="java.lang.Boolean">
+        SELECT c.*, u.username, u.nickname, b.title as blogTitle
+        FROM comment c 
+        LEFT JOIN user u ON c.user_id = u.id 
+        LEFT JOIN blog b ON c.blog_id = b.id
+        WHERE c.approved = #{approved} 
+        ORDER BY c.create_time DESC
+    </select>
+    
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT c.*, u.username, u.nickname, b.title as blogTitle
+        FROM comment c 
+        LEFT JOIN user u ON c.user_id = u.id 
+        LEFT JOIN blog b ON c.blog_id = b.id
+        ORDER BY c.create_time DESC
     </select>
     
     <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">

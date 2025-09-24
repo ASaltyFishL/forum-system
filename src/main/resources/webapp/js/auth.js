@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // 处理注册
 function handleRegister() {
     const username = document.getElementById('register-username').value;
+    const nickname = document.getElementById('register-nickname').value;
+    const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
 
     if (!username || !password) {
@@ -45,6 +47,8 @@ function handleRegister() {
         },
         body: JSON.stringify({
             username: username,
+            nickname: nickname || null,
+            email: email || null,
             password: password
         })
     })

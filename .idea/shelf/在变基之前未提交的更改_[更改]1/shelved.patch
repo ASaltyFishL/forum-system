@@ -1,0 +1,113 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ee63732e-5730-4698-b6e3-28812ec5c613\" name=\"更改\" comment=\"V3.3 优化前端页面，完成各项功能\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/webapp/admin.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/webapp/admin.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/webapp/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/webapp/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/webapp/js/admin.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/webapp/js/admin.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/webapp/js/app.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/webapp/js/app.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/webapp/admin.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/webapp/admin.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/webapp/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/webapp/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/webapp/js/admin.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/webapp/js/admin.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/webapp/js/app.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/webapp/js/app.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/webapp/js/blogs.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/webapp/js/blogs.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"MIXED\" />\r\n  </component>\r\n  <component name=\"GitRewordedCommitMessages\">\r\n    <option name=\"commitMessagesMapping\">\r\n      <RewordedCommitMessageMapping>\r\n        <option name=\"originalMessage\" value=\"V2.0 实现了基本的用户注册与登录，帖子发布与修改\" />\r\n        <option name=\"rewordedMessage\" value=\"V2.0 实现了基本的用户注册与登录，帖子发布与修改\" />\r\n      </RewordedCommitMessageMapping>\r\n    </option>\r\n    <option name=\"currentCommit\" value=\"1\" />\r\n    <option name=\"onto\" value=\"9b854e9ecf72ad419d037ad808dfefae85982557\" />\r\n  </component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"customMavenHome\" value=\"E:\\environment\\apache-maven-3.5.4\\apache-maven-3.5.4\" />\r\n        <option name=\"localRepository\" value=\"E:\\environment\\repository\" />\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"CUSTOM\" />\r\n        <option name=\"userSettingsFile\" value=\"E:\\environment\\apache-maven-3.5.4\\apache-maven-3.5.4\\conf\\settings.xml\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"333ceGQm3edGBC0Cvj1dB4Gi2H6\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"Spring Boot.ForumApplication.executor\": \"Debug\",\r\n    \"git-widget-placeholder\": \"formal\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/23665/Desktop/StudyProject/forum-system/src/main/resources/schema.sql\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"项目\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"MavenSettings\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"mysql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"ForumApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\r\n      <module name=\"forum-system\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.forum.ForumApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"应用程序级\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\r\n      <changelist id=\"ee63732e-5730-4698-b6e3-28812ec5c613\" name=\"更改\" comment=\"\" />\r\n      <created>1758549291881</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1758549291881</updated>\r\n      <workItem from=\"1758549295011\" duration=\"124000\" />\r\n      <workItem from=\"1758691811355\" duration=\"7551000\" />\r\n      <workItem from=\"1758701447174\" duration=\"7342000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"V1.0\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758692656355</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758692656356</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"V1.0\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758693585159</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758693585159</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"V1.2\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758694105460</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758694105460</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"V1.21\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758695312133</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758695312133</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"V1.3\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758697731034</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758697731034</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"V1.4\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758698427759</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758698427759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"V1.5\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758699532304</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758699532304</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"V2.0 实现了基本的用户注册与登录，帖子发布与修改\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758701291781</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758701291781</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"V2.0 实现了基本的用户注册与登录，帖子发布与修改\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758701304108</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758701304108</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"V2.1 实现了基本的用户注册与登录，帖子发布与修改\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758701498665</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758701498665</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"V2.2 增加了标签和分类\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758702465860</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758702465860</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"V2.3 增加了标签和分类\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758703244030</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758703244030</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"V3.0 完成了后台设计，实现了管理员和平台用户的区分\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758705056708</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758705056708</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"V3.01 完成了后台设计，实现了管理员和平台用户的区分\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758705088679</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758705088679</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"V3.1 优化了博客详情页面，优化了评论发表\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758706932783</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758706932783</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"V3.1 优化了博客详情页面，优化了评论发表\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758706939225</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758706939225</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"V3.2 新增评论管理与后台优化，注册时可以填写个人邮箱\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758707934120</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758707934120</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"V3.3 优化前端页面，完成各项功能\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1758709255500</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1758709255500</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"19\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"V1.1\" />\r\n    <MESSAGE value=\"V1.1\" />\r\n    <MESSAGE value=\"V1.2\" />\r\n    <MESSAGE value=\"V1.21\" />\r\n    <MESSAGE value=\"V1.3\" />\r\n    <MESSAGE value=\"V1.4\" />\r\n    <MESSAGE value=\"V1.5\" />\r\n    <MESSAGE value=\"V2.0 实现了基本的用户注册与登录，帖子发布与修改\" />\r\n    <MESSAGE value=\"V2.1 实现了基本的用户注册与登录，帖子发布与修改\" />\r\n    <MESSAGE value=\"V2.2 增加了标签和分类\" />\r\n    <MESSAGE value=\"V2.3 增加了标签和分类\" />\r\n    <MESSAGE value=\"V3.0 完成了后台设计，实现了管理员和平台用户的区分\" />\r\n    <MESSAGE value=\"V3.01 完成了后台设计，实现了管理员和平台用户的区分\" />\r\n    <MESSAGE value=\"V3.2 新增评论管理与后台优化\" />\r\n    <MESSAGE value=\"V3.1 优化了博客详情页面，优化了评论发表\" />\r\n    <MESSAGE value=\"V3.3 优化UI设计，完成各项功能\" />\r\n    <MESSAGE value=\"V3.2 新增评论管理与后台优化，注册时可以填写个人邮箱\" />\r\n    <MESSAGE value=\"V3.3 优化前端页面，完成各项功能\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"V3.3 优化前端页面，完成各项功能\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 8bc7392849cce727553b8c390eb580896f19a0d6)
++++ b/.idea/workspace.xml	(date 1758714455945)
+@@ -4,18 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V3.3 优化前端页面，完成各项功能">
++    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V3.4 正式版本">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/admin.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/admin.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/app.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/blogs.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/admin.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/admin.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/app.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/blogs.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,6 +21,12 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="RESET_MODE" value="MIXED" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "ASaltyFishL"
++  }
++}]]></component>
+   <component name="GitRewordedCommitMessages">
+     <option name="commitMessagesMapping">
+       <RewordedCommitMessageMapping>
+@@ -41,6 +37,12 @@
+     <option name="currentCommit" value="1" />
+     <option name="onto" value="9b854e9ecf72ad419d037ad808dfefae85982557" />
+   </component>
++  <component name="GithubPullRequestsUISettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "url": "https://github.com/ASaltyFishL/forum-system",
++    "accountId": "73ca87d0-cb51-4a14-9817-9fc1f83a7f20"
++  }
++}]]></component>
+   <component name="KubernetesApiPersistence">{}</component>
+   <component name="KubernetesApiProvider">{
+   &quot;isMigrated&quot;: true
+@@ -122,7 +124,7 @@
+       <updated>1758549291881</updated>
+       <workItem from="1758549295011" duration="124000" />
+       <workItem from="1758691811355" duration="7551000" />
+-      <workItem from="1758701447174" duration="7342000" />
++      <workItem from="1758701447174" duration="8942000" />
+     </task>
+     <task id="LOCAL-00001" summary="V1.0">
+       <option name="closed" value="true" />
+@@ -268,7 +270,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1758709255500</updated>
+     </task>
+-    <option name="localTasksCounter" value="19" />
++    <task id="LOCAL-00019" summary="V3.4 正式版本">
++      <option name="closed" value="true" />
++      <created>1758712375392</created>
++      <option name="number" value="00019" />
++      <option name="presentableId" value="LOCAL-00019" />
++      <option name="project" value="LOCAL" />
++      <updated>1758712375392</updated>
++    </task>
++    <option name="localTasksCounter" value="20" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -279,7 +289,19 @@
+       <map>
+         <entry key="MAIN">
+           <value>
+-            <State />
++            <State>
++              <option name="FILTERS">
++                <map>
++                  <entry key="branch">
++                    <value>
++                      <list>
++                        <option value="formal" />
++                      </list>
++                    </value>
++                  </entry>
++                </map>
++              </option>
++            </State>
+           </value>
+         </entry>
+       </map>
+@@ -304,6 +326,7 @@
+     <MESSAGE value="V3.3 优化UI设计，完成各项功能" />
+     <MESSAGE value="V3.2 新增评论管理与后台优化，注册时可以填写个人邮箱" />
+     <MESSAGE value="V3.3 优化前端页面，完成各项功能" />
+-    <option name="LAST_COMMIT_MESSAGE" value="V3.3 优化前端页面，完成各项功能" />
++    <MESSAGE value="V3.4 正式版本" />
++    <option name="LAST_COMMIT_MESSAGE" value="V3.4 正式版本" />
+   </component>
+ </project>
+\ No newline at end of file

@@ -3,10 +3,12 @@ package com.example.forum.controller;
 import com.example.forum.common.Result;
 import com.example.forum.entity.Blog;
 import com.example.forum.entity.Category;
+import com.example.forum.entity.Comment;
 import com.example.forum.entity.Tag;
 import com.example.forum.entity.User;
 import com.example.forum.service.BlogService;
 import com.example.forum.service.CategoryService;
+import com.example.forum.service.CommentService;
 import com.example.forum.service.TagService;
 import com.example.forum.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,9 @@ public class AdminController {
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private CommentService commentService;
 
     // ==================== 博客管理 ====================
     
@@ -237,6 +242,19 @@ public class AdminController {
             logger.error("删除用户失败: {}", e.getMessage(), e);
             return Result.error("删除失败: " + e.getMessage());
         }
+    }
+
+    // ==================== 评论管理 ====================
+    
+    @GetMapping("/comments")
+    public Result<List<Comment>> getAllComments(@RequestParam(required = false) Boolean approved) {
+        List<Comment> comments;
+        if (approved != null) {
+            comments = commentService.findByApproved(approved);
+        } else {
+            comments = commentService.findAll();
+        }
+        return Result.success("获取成功", comments);
     }
 
     // ==================== 统计信息 ====================

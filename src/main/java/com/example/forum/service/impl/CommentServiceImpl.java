@@ -39,6 +39,16 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public List<Comment> findByApproved(Boolean approved) {
+        return commentMapper.findByApproved(approved);
+    }
+
+    @Override
+    public List<Comment> findAll() {
+        return commentMapper.findAll();
+    }
+
+    @Override
     public List<Comment> findByUserId(Long userId) {
         return commentMapper.findByUserId(userId);
     }

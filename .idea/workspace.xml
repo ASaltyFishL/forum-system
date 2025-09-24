@@ -4,26 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V2.3 增加了标签和分类">
-      <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/forum/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/webapp/js/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/DataInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$ChangePasswordRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController$LoginRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/mapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/forum/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/webapp/js/auth.js" afterDir="false" />
+    <list default="true" id="ee63732e-5730-4698-b6e3-28812ec5c613" name="更改" comment="V3.4 正式版本">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +13,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ASaltyFishL"
+  }
+}]]></component>
   <component name="GitRewordedCommitMessages">
     <option name="commitMessagesMapping">
       <RewordedCommitMessageMapping>
@@ -44,6 +37,12 @@
     <option name="currentCommit" value="1" />
     <option name="onto" value="9b854e9ecf72ad419d037ad808dfefae85982557" />
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ASaltyFishL/forum-system",
+    "accountId": "73ca87d0-cb51-4a14-9817-9fc1f83a7f20"
+  }
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -78,9 +77,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ForumApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "formal",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/23665/Desktop/StudyProject/forum-system",
+    "last_opened_file_path": "C:/Users/23665/Desktop/StudyProject/forum-system/src/main/resources/schema.sql",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -125,7 +124,7 @@
       <updated>1758549291881</updated>
       <workItem from="1758549295011" duration="124000" />
       <workItem from="1758691811355" duration="7551000" />
-      <workItem from="1758701447174" duration="2299000" />
+      <workItem from="1758701447174" duration="8942000" />
     </task>
     <task id="LOCAL-00001" summary="V1.0">
       <option name="closed" value="true" />
@@ -223,7 +222,63 @@
       <option name="project" value="LOCAL" />
       <updated>1758703244030</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="V3.0 完成了后台设计，实现了管理员和平台用户的区分">
+      <option name="closed" value="true" />
+      <created>1758705056708</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1758705056708</updated>
+    </task>
+    <task id="LOCAL-00014" summary="V3.01 完成了后台设计，实现了管理员和平台用户的区分">
+      <option name="closed" value="true" />
+      <created>1758705088679</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1758705088679</updated>
+    </task>
+    <task id="LOCAL-00015" summary="V3.1 优化了博客详情页面，优化了评论发表">
+      <option name="closed" value="true" />
+      <created>1758706932783</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1758706932783</updated>
+    </task>
+    <task id="LOCAL-00016" summary="V3.1 优化了博客详情页面，优化了评论发表">
+      <option name="closed" value="true" />
+      <created>1758706939225</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758706939225</updated>
+    </task>
+    <task id="LOCAL-00017" summary="V3.2 新增评论管理与后台优化，注册时可以填写个人邮箱">
+      <option name="closed" value="true" />
+      <created>1758707934120</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1758707934120</updated>
+    </task>
+    <task id="LOCAL-00018" summary="V3.3 优化前端页面，完成各项功能">
+      <option name="closed" value="true" />
+      <created>1758709255500</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1758709255500</updated>
+    </task>
+    <task id="LOCAL-00019" summary="V3.4 正式版本">
+      <option name="closed" value="true" />
+      <created>1758712375392</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1758712375392</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +289,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="formal" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -252,6 +319,14 @@
     <MESSAGE value="V2.1 实现了基本的用户注册与登录，帖子发布与修改" />
     <MESSAGE value="V2.2 增加了标签和分类" />
     <MESSAGE value="V2.3 增加了标签和分类" />
-    <option name="LAST_COMMIT_MESSAGE" value="V2.3 增加了标签和分类" />
+    <MESSAGE value="V3.0 完成了后台设计，实现了管理员和平台用户的区分" />
+    <MESSAGE value="V3.01 完成了后台设计，实现了管理员和平台用户的区分" />
+    <MESSAGE value="V3.2 新增评论管理与后台优化" />
+    <MESSAGE value="V3.1 优化了博客详情页面，优化了评论发表" />
+    <MESSAGE value="V3.3 优化UI设计，完成各项功能" />
+    <MESSAGE value="V3.2 新增评论管理与后台优化，注册时可以填写个人邮箱" />
+    <MESSAGE value="V3.3 优化前端页面，完成各项功能" />
+    <MESSAGE value="V3.4 正式版本" />
+    <option name="LAST_COMMIT_MESSAGE" value="V3.4 正式版本" />
   </component>
 </project>

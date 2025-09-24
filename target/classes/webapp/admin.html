@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论坛管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        .main-content {
+            transition: margin-left 0.3s ease-in-out;
+        }
+        .main-content.expanded {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar fixed left-0 top-0 h-full w-64 bg-gray-800 text-white z-50">
+        <div class="p-4">
+            <h2 class="text-xl font-bold mb-6">论坛管理系统</h2>
+            <nav class="space-y-2">
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="dashboard">
+                    <i class="fa fa-dashboard mr-3"></i>
+                    <span>仪表盘</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="blogs">
+                    <i class="fa fa-file-text-o mr-3"></i>
+                    <span>博客管理</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="categories">
+                    <i class="fa fa-folder mr-3"></i>
+                    <span>分类管理</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="tags">
+                    <i class="fa fa-tags mr-3"></i>
+                    <span>标签管理</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="users">
+                    <i class="fa fa-users mr-3"></i>
+                    <span>用户管理</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 rounded hover:bg-gray-700 transition-colors" data-section="comments">
+                    <i class="fa fa-comments mr-3"></i>
+                    <span>评论管理</span>
+                </a>
+            </nav>
+        </div>
+        <div class="absolute bottom-4 left-4 right-4">
+            <button id="logout-btn" class="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition-colors">
+                <i class="fa fa-sign-out mr-2"></i>退出登录
+            </button>
+        </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div id="main-content" class="main-content ml-64 min-h-screen">
+        <!-- 顶部导航栏 -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="flex items-center justify-between px-6 py-4">
+                <div class="flex items-center">
+                    <button id="sidebar-toggle" class="text-gray-600 hover:text-gray-900 mr-4">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                    <h1 id="page-title" class="text-2xl font-bold text-gray-800">仪表盘</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="admin-username" class="text-gray-600">管理员</span>
+                    <a href="/" class="text-blue-600 hover:text-blue-800">
+                        <i class="fa fa-external-link mr-1"></i>返回前台
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- 内容区域 -->
+        <main class="p-6">
+            <!-- 仪表盘 -->
+            <section id="dashboard-section" class="content-section">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                                <i class="fa fa-file-text-o text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">总博客数</p>
+                                <p id="total-blogs" class="text-2xl font-bold text-gray-900">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-green-100 text-green-600">
+                                <i class="fa fa-check-circle text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">已发布</p>
+                                <p id="published-blogs" class="text-2xl font-bold text-gray-900">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                                <i class="fa fa-edit text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">草稿</p>
+                                <p id="draft-blogs" class="text-2xl font-bold text-gray-900">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                                <i class="fa fa-users text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-600">总用户数</p>
+                                <p id="total-users" class="text-2xl font-bold text-gray-900">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 博客管理 -->
+            <section id="blogs-section" class="content-section hidden">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-gray-800">博客管理</h2>
+                            <div class="flex space-x-2">
+                                <select id="blog-status-filter" class="border border-gray-300 rounded px-3 py-2">
+                                    <option value="">全部状态</option>
+                                    <option value="true">已发布</option>
+                                    <option value="false">草稿</option>
+                                </select>
+                                <button id="add-blog-btn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                                    <i class="fa fa-plus mr-2"></i>新建博客
+                                </button>
+                                <button id="refresh-blogs" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                                    <i class="fa fa-refresh mr-2"></i>刷新
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="blogs-table-container">
+                            <div class="text-center py-8">
+                                <i class="fa fa-spinner fa-spin text-2xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">正在加载博客列表...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 分类管理 -->
+            <section id="categories-section" class="content-section hidden">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-gray-800">分类管理</h2>
+                            <button id="add-category-btn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                                <i class="fa fa-plus mr-2"></i>添加分类
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="categories-table-container">
+                            <div class="text-center py-8">
+                                <i class="fa fa-spinner fa-spin text-2xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">正在加载分类列表...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 标签管理 -->
+            <section id="tags-section" class="content-section hidden">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-gray-800">标签管理</h2>
+                            <button id="add-tag-btn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                                <i class="fa fa-plus mr-2"></i>添加标签
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="tags-table-container">
+                            <div class="text-center py-8">
+                                <i class="fa fa-spinner fa-spin text-2xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">正在加载标签列表...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 用户管理 -->
+            <section id="users-section" class="content-section hidden">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-gray-800">用户管理</h2>
+                            <div class="flex space-x-2">
+                                <select id="user-role-filter" class="border border-gray-300 rounded px-3 py-2">
+                                    <option value="">全部角色</option>
+                                    <option value="USER">普通用户</option>
+                                    <option value="ADMIN">管理员</option>
+                                </select>
+                                <button id="add-user-btn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                                    <i class="fa fa-plus mr-2"></i>新建用户
+                                </button>
+                                <button id="refresh-users" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                                    <i class="fa fa-refresh mr-2"></i>刷新
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="users-table-container">
+                            <div class="text-center py-8">
+                                <i class="fa fa-spinner fa-spin text-2xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">正在加载用户列表...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 评论管理 -->
+            <section id="comments-section" class="content-section hidden">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-xl font-bold text-gray-800">评论管理</h2>
+                            <div class="flex space-x-2">
+                                <select id="comment-status-filter" class="border border-gray-300 rounded px-3 py-2">
+                                    <option value="">全部状态</option>
+                                    <option value="true">已审核</option>
+                                    <option value="false">待审核</option>
+                                </select>
+                                <button id="refresh-comments" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                                    <i class="fa fa-refresh mr-2"></i>刷新
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div id="comments-table-container">
+                            <div class="text-center py-8">
+                                <i class="fa fa-spinner fa-spin text-2xl text-gray-400 mb-2"></i>
+                                <p class="text-gray-500">正在加载评论列表...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800" id="modal-title">确认操作</h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="mb-6" id="modal-body">
+                    <!-- 模态框内容 -->
+                </div>
+                <div class="flex justify-end space-x-2" id="modal-footer">
+                    <button id="modal-cancel" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded">
+                        取消
+                    </button>
+                    <button id="modal-confirm" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                        确认
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 表单模态框 -->
+    <div id="form-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800" id="form-modal-title">添加分类</h3>
+                    <button id="close-form-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <form id="form-modal-form">
+                    <div id="form-modal-body">
+                        <!-- 表单内容 -->
+                    </div>
+                    <div class="flex justify-end space-x-2 mt-6">
+                        <button type="button" id="form-modal-cancel" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded">
+                            取消
+                        </button>
+                        <button type="submit" id="form-modal-submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                            保存
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/admin-blog.js"></script>
+</body>
+</html>

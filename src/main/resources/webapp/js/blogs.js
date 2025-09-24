@@ -51,6 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             viewBlog(blogId);
         });
     }
+
+    // 为评论表单添加提交事件
+    const commentForm = document.getElementById('comment-form');
+    if (commentForm) {
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleCommentSubmit();
+        });
+    }
 });
 
 // 显示创建博客表单
@@ -561,6 +570,14 @@ function renderBlogDetail(blog) {
     `;
     
     blogDetailContainer.innerHTML = html;
+    
+    // 显示评论表单（如果用户已登录）
+    const commentFormContainer = document.getElementById('comment-form-container');
+    if (commentFormContainer && currentUserId) {
+        commentFormContainer.classList.remove('hidden');
+    } else if (commentFormContainer) {
+        commentFormContainer.classList.add('hidden');
+    }
 }
 
 // 转义HTML特殊字符的函数
@@ -625,7 +642,7 @@ function loadTagsForCreate() {
             if (data.success) {
                 const tagSelect = document.getElementById('topic-tags');
                 if (tagSelect) {
-                    tagSelect.innerHTML = '<option value="">请选择标签（可多选）</option>';
+                    tagSelect.innerHTML = ''; // 清空现有选项
                     data.data.forEach(tag => {
                         const option = document.createElement('option');
                         option.value = tag.id;
@@ -648,7 +665,7 @@ function loadTagsForUpdate() {
             if (data.success) {
                 const tagSelect = document.getElementById('update-topic-tags');
                 if (tagSelect) {
-                    tagSelect.innerHTML = '<option value="">请选择标签（可多选）</option>';
+                    tagSelect.innerHTML = ''; // 清空现有选项
                     data.data.forEach(tag => {
                         const option = document.createElement('option');
                         option.value = tag.id;
@@ -877,6 +894,183 @@ function updateFilterResultsInfo(pageInfo, filters) {
     }
 
     filterResultsInfo.textContent = infoText;
+}
+
+// ==================== 评论功能 ====================
+
+// 处理评论提交
+function handleCommentSubmit() {
+    const content = document.getElementById('comment-content').value;
+    const blogId = getCurrentBlogId();
+    const userId = getCurrentUserId();
+    
+    if (!content || !blogId || !userId) {
+        showModal('评论失败', '请先登录并填写评论内容');
+        return;
+    }
+    
+    showLoading('正在提交评论...');
+    
+    fetch('/api/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            content: content,
+            blogId: blogId,
+            userId: userId,
+            approved: true // 直接通过，不需要审核
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoading();
+        
+        if (data.success) {
+            document.getElementById('comment-content').value = '';
+            showModal('评论提交成功', '评论已成功发布！', function() {
+                loadComments(blogId);
+            });
+        } else {
+            showModal('评论失败', data.message || '提交评论失败');
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        showModal('评论失败', '网络错误，请稍后重试');
+        console.error('Comment submission error:', error);
+    });
+}
+
+// 获取当前博客ID
+function getCurrentBlogId() {
+    return localStorage.getItem('currentBlogId');
+}
+
+// 加载评论列表
+function loadComments(blogId) {
+    if (!blogId) {
+        blogId = getCurrentBlogId();
+        if (!blogId) {
+            console.error('没有选择博客，无法加载评论');
+            return;
+        }
+    }
+    
+    const commentsContainer = document.getElementById('comments-container');
+    if (!commentsContainer) {
+        console.error('找不到评论列表容器');
+        return;
+    }
+    
+    // 显示加载中的状态
+    let loadingHtml = `
+        <h3 class="text-xl font-bold text-gray-800 mb-4">评论列表</h3>
+        <div class="text-center text-gray-500 py-10">
+            <i class="fa fa-spinner fa-spin text-2xl mb-2"></i>
+            <p>正在加载评论...</p>
+        </div>
+    `;
+    commentsContainer.innerHTML = loadingHtml;
+    
+    // 发送请求获取评论列表
+    fetch(`/api/blogs/${blogId}/comments`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('获取评论列表失败: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                renderComments(data.data);
+            } else {
+                throw new Error(data.message || '获取评论列表失败');
+            }
+        })
+        .catch(error => {
+            console.error('加载评论列表错误:', error);
+            let errorHtml = `
+                <h3 class="text-xl font-bold text-gray-800 mb-4">评论列表</h3>
+                <div class="text-center text-red-500 py-10">
+                    <i class="fa fa-exclamation-circle text-2xl mb-2"></i>
+                    <p>加载评论失败: ${error.message}</p>
+                    <button onclick="loadComments(${blogId})" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                        <i class="fa fa-refresh mr-2"></i>重新加载
+                    </button>
+                </div>
+            `;
+            commentsContainer.innerHTML = errorHtml;
+        });
+}
+
+// 渲染评论列表
+function renderComments(comments) {
+    const commentsContainer = document.getElementById('comments-container');
+    
+    if (!comments || comments.length === 0) {
+        commentsContainer.innerHTML = `
+            <h3 class="text-xl font-bold text-gray-800 mb-4">评论列表</h3>
+            <div class="text-center text-gray-500 py-10">
+                <i class="fa fa-comment-o text-2xl mb-2"></i>
+                <p>暂无评论，快来发表第一条评论吧！</p>
+            </div>
+        `;
+        return;
+    }
+    
+    let html = `
+        <h3 class="text-xl font-bold text-gray-800 mb-4">评论列表</h3>
+    `;
+    
+    // 渲染评论
+    comments.forEach(comment => {
+        html += `
+            <div class="bg-white rounded-lg shadow-md p-6 mb-4 hover:shadow-lg transition-shadow duration-200">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fa fa-user text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${comment.nickname || comment.username || '匿名用户'}</h4>
+                            <p class="text-sm text-gray-500">${formatDate(comment.createTime)}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-gray-700 ml-13">
+                    ${comment.content}
+                </div>
+            </div>
+        `;
+    });
+    
+    commentsContainer.innerHTML = html;
+}
+
+// 格式化日期函数
+function formatDate(dateStr) {
+    if (!dateStr) return '未知时间';
+    
+    try {
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime()) || date.getFullYear() <= 1970) {
+            return '未知时间';
+        }
+        
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    } catch (e) {
+        console.error('日期格式化错误:', e);
+        return '未知时间';
+    }
 }
 
 // 页面加载时初始化筛选功能

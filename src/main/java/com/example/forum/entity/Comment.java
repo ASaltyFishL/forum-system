@@ -36,6 +36,8 @@ public class Comment implements Serializable {
     
     // 非持久化字段 - 用于显示
     private String username;
+    private String nickname;
+    private String blogTitle;
     private List<Comment> children;
 }
     

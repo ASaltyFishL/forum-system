@@ -17,6 +17,12 @@ public interface CommentMapper {
     // 查询待审核的评论
     List<Comment> findByApprovedFalse();
 
+    // 根据审核状态查询评论
+    List<Comment> findByApproved(@Param("approved") Boolean approved);
+
+    // 查询所有评论
+    List<Comment> findAll();
+
     // 根据用户ID查询评论
     List<Comment> findByUserId(@Param("userId") Long userId);
 
