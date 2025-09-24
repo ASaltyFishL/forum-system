@@ -45,10 +45,10 @@ public interface BlogMapper {
     // 分页查询博客
     List<Blog> findByPage(@Param("offset") int offset, @Param("pageSize") int pageSize, 
                          @Param("categoryId") Long categoryId, @Param("userId") Long userId, 
-                         @Param("keyword") String keyword);
+                         @Param("keyword") String keyword, @Param("published") Boolean published);
     
     // 分页查询博客总数
     int countByPage(@Param("categoryId") Long categoryId, @Param("userId") Long userId, 
-                   @Param("keyword") String keyword);
+                   @Param("keyword") String keyword, @Param("published") Boolean published);
 }
     

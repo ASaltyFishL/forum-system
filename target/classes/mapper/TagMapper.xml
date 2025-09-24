@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.forum.mapper.TagMapper">
+    
+    <resultMap id="BaseResultMap" type="com.example.forum.entity.Tag">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM tag ORDER BY create_time DESC
+    </select>
+    
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT * FROM tag WHERE id = #{id}
+    </select>
+    
+    <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM tag WHERE name = #{name}
+    </select>
+    
+    <insert id="insert" parameterType="com.example.forum.entity.Tag" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tag (name, create_time, update_time)
+        VALUES (#{name}, #{createTime}, #{updateTime})
+    </insert>
+    
+    <update id="update" parameterType="com.example.forum.entity.Tag">
+        UPDATE tag 
+        SET name = #{name}, update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM tag WHERE id = #{id}
+    </delete>
+    
+    <select id="findByBlogId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT t.* FROM tag t
+        JOIN blog_tag bt ON t.id = bt.tag_id
+        WHERE bt.blog_id = #{blogId}
+        ORDER BY t.name
+    </select>
+</mapper>

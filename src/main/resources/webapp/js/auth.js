@@ -176,29 +176,46 @@ function checkAuthStatus() {
 function updateAuthUI(isLoggedIn) {
     const authLinks = document.getElementById('auth-links');
     const userLinks = document.getElementById('user-links');
-    const createTopicBtn = document.getElementById('create-topic-btn');
-    const replyFormContainer = document.getElementById('reply-form-container');
+    const createBlogBtn = document.getElementById('create-blog-btn'); // 改为blog命名
+    const commentFormContainer = document.getElementById('comment-form-container'); // 改为comment命名
+    const usernameDisplay = document.getElementById('username-display');
 
     if (isLoggedIn) {
         const user = JSON.parse(localStorage.getItem('user'));
 
-        document.getElementById('username-display').textContent = user.username;
+        if (usernameDisplay) {
+            usernameDisplay.textContent = user.username;
+        }
 
-        authLinks.classList.add('hidden');
-        userLinks.classList.remove('hidden');
-        userLinks.classList.add('flex');
+        if (authLinks) {
+            authLinks.classList.add('hidden');
+        }
+        if (userLinks) {
+            userLinks.classList.remove('hidden');
+            userLinks.classList.add('flex');
+        }
 
-
-        createTopicBtn.classList.remove('hidden');
-        replyFormContainer.classList.remove('hidden');
+        if (createBlogBtn) {
+            createBlogBtn.classList.remove('hidden');
+        }
+        if (commentFormContainer) {
+            commentFormContainer.classList.remove('hidden');
+        }
     } else {
-        authLinks.classList.remove('hidden');
-        userLinks.classList.add('hidden');
-        userLinks.classList.remove('flex');
+        if (authLinks) {
+            authLinks.classList.remove('hidden');
+        }
+        if (userLinks) {
+            userLinks.classList.add('hidden');
+            userLinks.classList.remove('flex');
+        }
 
-
-        createTopicBtn.classList.add('hidden');
-        replyFormContainer.classList.add('hidden');
+        if (createBlogBtn) {
+            createBlogBtn.classList.add('hidden');
+        }
+        if (commentFormContainer) {
+            commentFormContainer.classList.add('hidden');
+        }
     }
 }
 

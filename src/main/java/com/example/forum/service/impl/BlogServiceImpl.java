@@ -162,8 +162,10 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Map<String, Object> findByPage(int pageNum, int pageSize, Long categoryId, Long userId, String keyword) {
         int offset = (pageNum - 1) * pageSize;
-        List<Blog> blogs = blogMapper.findByPage(offset, pageSize, categoryId, userId, keyword);
-        int total = blogMapper.countByPage(categoryId, userId, keyword);
+        // 只查询已发布的博客
+        Boolean published = true;
+        List<Blog> blogs = blogMapper.findByPage(offset, pageSize, categoryId, userId, keyword, published);
+        int total = blogMapper.countByPage(categoryId, userId, keyword, published);
         
         Map<String, Object> result = new HashMap<>();
         result.put("data", blogs);
