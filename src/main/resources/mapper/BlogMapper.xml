@@ -159,4 +159,23 @@
             </if>
         </where>
     </select>
+    
+    <!-- 按标签分页查询博客 -->
+    <select id="findByTagIdWithPage" resultMap="BaseResultMap" parameterType="map">
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        JOIN blog_tag bt ON b.id = bt.blog_id
+        WHERE bt.tag_id = #{tagId}
+        ORDER BY b.create_time DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+    
+    <!-- 按标签查询博客总数 -->
+    <select id="countByTagId" resultType="java.lang.Integer" parameterType="java.lang.Long">
+        SELECT COUNT(*) FROM blog b
+        JOIN blog_tag bt ON b.id = bt.blog_id
+        WHERE bt.tag_id = #{tagId}
+    </select>
 </mapper>

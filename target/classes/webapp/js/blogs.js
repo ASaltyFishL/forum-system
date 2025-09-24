@@ -59,8 +59,12 @@ function showCreateBlogForm() {
     document.getElementById('topic-title').value = '';
     document.getElementById('topic-content').value = '';
     document.getElementById('topic-category').value = '';
-    document.getElementById('selected-tags').innerHTML = '';
-    document.getElementById('tag-input').value = '';
+    
+    // 清空标签选择
+    const tagSelect = document.getElementById('topic-tags');
+    if (tagSelect) {
+        tagSelect.selectedIndex = -1; // 清除所有选择
+    }
     
     // 加载分类和标签数据
     loadCategoriesForCreate();
@@ -77,8 +81,10 @@ function showEditBlogForm(blogId, title, content) {
     document.getElementById('update-topic-content').value = content;
     
     // 清空标签选择
-    document.getElementById('update-selected-tags').innerHTML = '';
-    document.getElementById('update-tag-input').value = '';
+    const tagSelect = document.getElementById('update-topic-tags');
+    if (tagSelect) {
+        tagSelect.selectedIndex = -1; // 清除所有选择
+    }
     
     // 加载分类和标签数据
     loadCategoriesForUpdate();
@@ -119,7 +125,7 @@ function handleCreateBlog() {
     }
 
     // 获取选中的标签
-    const selectedTags = getSelectedTags();
+    const selectedTags = getSelectedTagsFromSelect('topic-tags');
 
     showLoading('正在发布...');
 
@@ -190,7 +196,7 @@ function handleUpdateBlog() {
     }
 
     // 获取选中的标签
-    const selectedTags = getUpdateSelectedTags();
+    const selectedTags = getSelectedTagsFromSelect('update-topic-tags');
 
     showLoading('正在更新...');
 
@@ -273,8 +279,8 @@ function deleteBlog(blogId) {
 }
 
 // 加载所有博客列表
-function loadBlogs() {
-    console.log('正在加载博客列表...');
+function loadBlogs(filters = {}) {
+    console.log('正在加载博客列表...', filters);
     const blogsContainer = document.getElementById('blogs-container');
     if (!blogsContainer) {
         console.error('找不到博客容器元素');
@@ -289,9 +295,20 @@ function loadBlogs() {
         </div>
     `;
     
+    // 构建查询参数
+    const params = new URLSearchParams();
+    if (filters.categoryId) params.append('categoryId', filters.categoryId);
+    if (filters.tagId) params.append('tagId', filters.tagId);
+    if (filters.keyword) params.append('keyword', filters.keyword);
+    if (filters.pageNum) params.append('pageNum', filters.pageNum);
+    if (filters.pageSize) params.append('pageSize', filters.pageSize);
+    
+    const queryString = params.toString();
+    const url = queryString ? `/api/blogs?${queryString}` : '/api/blogs';
+    
     // 发送请求获取博客列表
-    console.log('发送API请求到 /api/blogs');
-    fetch('/api/blogs')
+    console.log('发送API请求到', url);
+    fetch(url)
         .then(response => {
             console.log('收到博客列表响应:', response.status, response.statusText);
             if (!response.ok) {
@@ -306,6 +323,7 @@ function loadBlogs() {
                 console.log('博客数量:', data.data.pageInfo.data.length);
                 console.log('博客详情:', data.data.pageInfo.data);
                 renderBlogs(data.data.pageInfo.data);
+                updateFilterResultsInfo(data.data.pageInfo, filters);
             } else {
                 throw new Error(data.message || '获取博客列表失败');
             }
@@ -605,15 +623,16 @@ function loadTagsForCreate() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const availableTagsContainer = document.getElementById('available-tags');
-                availableTagsContainer.innerHTML = '';
-                data.data.forEach(tag => {
-                    const tagElement = document.createElement('span');
-                    tagElement.className = 'inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-300';
-                    tagElement.textContent = tag.name;
-                    tagElement.onclick = () => addTagToCreate(tag);
-                    availableTagsContainer.appendChild(tagElement);
-                });
+                const tagSelect = document.getElementById('topic-tags');
+                if (tagSelect) {
+                    tagSelect.innerHTML = '<option value="">请选择标签（可多选）</option>';
+                    data.data.forEach(tag => {
+                        const option = document.createElement('option');
+                        option.value = tag.id;
+                        option.textContent = tag.name;
+                        tagSelect.appendChild(option);
+                    });
+                }
             }
         })
         .catch(error => {
@@ -627,15 +646,16 @@ function loadTagsForUpdate() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const availableTagsContainer = document.getElementById('update-available-tags');
-                availableTagsContainer.innerHTML = '';
-                data.data.forEach(tag => {
-                    const tagElement = document.createElement('span');
-                    tagElement.className = 'inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-300';
-                    tagElement.textContent = tag.name;
-                    tagElement.onclick = () => addTagToUpdate(tag);
-                    availableTagsContainer.appendChild(tagElement);
-                });
+                const tagSelect = document.getElementById('update-topic-tags');
+                if (tagSelect) {
+                    tagSelect.innerHTML = '<option value="">请选择标签（可多选）</option>';
+                    data.data.forEach(tag => {
+                        const option = document.createElement('option');
+                        option.value = tag.id;
+                        option.textContent = tag.name;
+                        tagSelect.appendChild(option);
+                    });
+                }
             }
         })
         .catch(error => {
@@ -656,11 +676,22 @@ function loadBlogCategoryAndTags(blogId) {
                 
                 // 设置标签
                 if (data.data.tags && data.data.tags.length > 0) {
-                    const selectedTagsContainer = document.getElementById('update-selected-tags');
-                    selectedTagsContainer.innerHTML = '';
-                    data.data.tags.forEach(tag => {
-                        addTagToUpdateContainer(tag);
-                    });
+                    const tagSelect = document.getElementById('update-topic-tags');
+                    if (tagSelect) {
+                        // 清除之前的选择
+                        for (let i = 0; i < tagSelect.options.length; i++) {
+                            tagSelect.options[i].selected = false;
+                        }
+                        // 设置选中的标签
+                        data.data.tags.forEach(tag => {
+                            for (let i = 0; i < tagSelect.options.length; i++) {
+                                if (tagSelect.options[i].value == tag.id) {
+                                    tagSelect.options[i].selected = true;
+                                    break;
+                                }
+                            }
+                        });
+                    }
                 }
             }
         })
@@ -669,145 +700,187 @@ function loadBlogCategoryAndTags(blogId) {
         });
 }
 
-// 添加标签到创建表单
-function addTagToCreate(tag) {
-    const selectedTagsContainer = document.getElementById('selected-tags');
-    const existingTag = selectedTagsContainer.querySelector(`[data-tag-id="${tag.id}"]`);
-    if (!existingTag) {
-        addTagToCreateContainer(tag);
-    }
-}
 
-// 添加标签到创建表单容器
-function addTagToCreateContainer(tag) {
-    const selectedTagsContainer = document.getElementById('selected-tags');
-    const tagElement = document.createElement('span');
-    tagElement.className = 'inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2';
-    tagElement.setAttribute('data-tag-id', tag.id);
-    tagElement.innerHTML = `${tag.name} <span class="cursor-pointer ml-1" onclick="removeTagFromCreate(${tag.id})">&times;</span>`;
-    selectedTagsContainer.appendChild(tagElement);
-}
-
-// 添加标签到更新表单
-function addTagToUpdate(tag) {
-    const selectedTagsContainer = document.getElementById('update-selected-tags');
-    const existingTag = selectedTagsContainer.querySelector(`[data-tag-id="${tag.id}"]`);
-    if (!existingTag) {
-        addTagToUpdateContainer(tag);
-    }
-}
-
-// 添加标签到更新表单容器
-function addTagToUpdateContainer(tag) {
-    const selectedTagsContainer = document.getElementById('update-selected-tags');
-    const tagElement = document.createElement('span');
-    tagElement.className = 'inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm mr-2 mb-2';
-    tagElement.setAttribute('data-tag-id', tag.id);
-    tagElement.innerHTML = `${tag.name} <span class="cursor-pointer ml-1" onclick="removeTagFromUpdate(${tag.id})">&times;</span>`;
-    selectedTagsContainer.appendChild(tagElement);
-}
-
-// 从创建表单移除标签
-function removeTagFromCreate(tagId) {
-    const tagElement = document.querySelector(`#selected-tags [data-tag-id="${tagId}"]`);
-    if (tagElement) {
-        tagElement.remove();
-    }
-}
-
-// 从更新表单移除标签
-function removeTagFromUpdate(tagId) {
-    const tagElement = document.querySelector(`#update-selected-tags [data-tag-id="${tagId}"]`);
-    if (tagElement) {
-        tagElement.remove();
-    }
-}
-
-// 获取创建表单中选中的标签
-function getSelectedTags() {
+// 从下拉框获取选中的标签
+function getSelectedTagsFromSelect(selectId) {
     const selectedTags = [];
-    const tagElements = document.querySelectorAll('#selected-tags [data-tag-id]');
-    tagElements.forEach(element => {
-        const tagId = element.getAttribute('data-tag-id');
-        selectedTags.push({ id: parseInt(tagId) });
-    });
-    return selectedTags;
-}
-
-// 获取更新表单中选中的标签
-function getUpdateSelectedTags() {
-    const selectedTags = [];
-    const tagElements = document.querySelectorAll('#update-selected-tags [data-tag-id]');
-    tagElements.forEach(element => {
-        const tagId = element.getAttribute('data-tag-id');
-        selectedTags.push({ id: parseInt(tagId) });
-    });
-    return selectedTags;
-}
-
-// 标签输入框事件处理
-document.addEventListener('DOMContentLoaded', function() {
-    // 创建表单标签输入
-    const tagInput = document.getElementById('tag-input');
-    if (tagInput) {
-        tagInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const tagName = this.value.trim();
-                if (tagName) {
-                    // 创建新标签
-                    createNewTag(tagName, 'create');
-                    this.value = '';
-                }
+    const tagSelect = document.getElementById(selectId);
+    if (tagSelect) {
+        for (let i = 0; i < tagSelect.options.length; i++) {
+            if (tagSelect.options[i].selected && tagSelect.options[i].value) {
+                selectedTags.push({ id: parseInt(tagSelect.options[i].value) });
             }
-        });
-    }
-
-    // 更新表单标签输入
-    const updateTagInput = document.getElementById('update-tag-input');
-    if (updateTagInput) {
-        updateTagInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                const tagName = this.value.trim();
-                if (tagName) {
-                    // 创建新标签
-                    createNewTag(tagName, 'update');
-                    this.value = '';
-                }
-            }
-        });
-    }
-});
-
-// 创建新标签
-function createNewTag(tagName, formType) {
-    fetch('/api/tags', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: tagName
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            const newTag = data.data;
-            if (formType === 'create') {
-                addTagToCreateContainer(newTag);
-                loadTagsForCreate(); // 重新加载可用标签
-            } else {
-                addTagToUpdateContainer(newTag);
-                loadTagsForUpdate(); // 重新加载可用标签
-            }
-        } else {
-            showModal('创建标签失败', data.message || '创建标签失败');
         }
-    })
-    .catch(error => {
-        console.error('创建标签失败:', error);
-        showModal('创建标签失败', '网络错误，请稍后重试');
-    });
+    }
+    return selectedTags;
 }
+
+
+// ==================== 筛选功能 ====================
+
+// 初始化筛选功能
+function initFilters() {
+    loadFilterOptions();
+    bindFilterEvents();
+}
+
+// 加载筛选选项
+function loadFilterOptions() {
+    // 加载分类选项
+    fetch('/api/categories')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const categoryFilter = document.getElementById('category-filter');
+                if (categoryFilter) {
+                    categoryFilter.innerHTML = '<option value="">全部分类</option>';
+                    data.data.forEach(category => {
+                        const option = document.createElement('option');
+                        option.value = category.id;
+                        option.textContent = category.name;
+                        categoryFilter.appendChild(option);
+                    });
+                }
+            }
+        })
+        .catch(error => {
+            console.error('加载分类选项失败:', error);
+        });
+
+    // 加载标签选项
+    fetch('/api/tags')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const tagFilter = document.getElementById('tag-filter');
+                if (tagFilter) {
+                    tagFilter.innerHTML = '<option value="">全部标签</option>';
+                    data.data.forEach(tag => {
+                        const option = document.createElement('option');
+                        option.value = tag.id;
+                        option.textContent = tag.name;
+                        tagFilter.appendChild(option);
+                    });
+                }
+            }
+        })
+        .catch(error => {
+            console.error('加载标签选项失败:', error);
+        });
+}
+
+// 绑定筛选事件
+function bindFilterEvents() {
+    // 应用筛选按钮
+    const applyFiltersBtn = document.getElementById('apply-filters');
+    if (applyFiltersBtn) {
+        applyFiltersBtn.addEventListener('click', applyFilters);
+    }
+
+    // 清除筛选按钮
+    const clearFiltersBtn = document.getElementById('clear-filters');
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', clearFilters);
+    }
+
+    // 搜索按钮
+    const searchBtn = document.getElementById('search-btn');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', applyFilters);
+    }
+
+    // 搜索框回车事件
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                applyFilters();
+            }
+        });
+    }
+
+    // 分类和标签选择变化时自动应用筛选
+    const categoryFilter = document.getElementById('category-filter');
+    const tagFilter = document.getElementById('tag-filter');
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', applyFilters);
+    }
+    if (tagFilter) {
+        tagFilter.addEventListener('change', applyFilters);
+    }
+}
+
+// 应用筛选
+function applyFilters() {
+    const categoryId = document.getElementById('category-filter')?.value;
+    const tagId = document.getElementById('tag-filter')?.value;
+    const keyword = document.getElementById('search-input')?.value.trim();
+
+    const filters = {};
+    if (categoryId) filters.categoryId = categoryId;
+    if (tagId) filters.tagId = tagId;
+    if (keyword) filters.keyword = keyword;
+
+    console.log('应用筛选:', filters);
+    loadBlogs(filters);
+}
+
+// 清除筛选
+function clearFilters() {
+    const categoryFilter = document.getElementById('category-filter');
+    const tagFilter = document.getElementById('tag-filter');
+    const searchInput = document.getElementById('search-input');
+
+    if (categoryFilter) categoryFilter.value = '';
+    if (tagFilter) tagFilter.value = '';
+    if (searchInput) searchInput.value = '';
+
+    console.log('清除筛选');
+    loadBlogs();
+}
+
+// 更新筛选结果信息
+function updateFilterResultsInfo(pageInfo, filters) {
+    const filterResultsInfo = document.getElementById('filter-results-info');
+    if (!filterResultsInfo) return;
+
+    const total = pageInfo.total || 0;
+    const currentPage = pageInfo.pageNum || 1;
+    const pageSize = pageInfo.pageSize || 10;
+    const totalPages = pageInfo.totalPages || 1;
+
+    let infoText = `共找到 ${total} 篇博客`;
+    
+    // 添加筛选条件信息
+    const filterConditions = [];
+    if (filters.categoryId) {
+        const categoryFilter = document.getElementById('category-filter');
+        const categoryName = categoryFilter?.selectedOptions[0]?.text || '未知分类';
+        filterConditions.push(`分类: ${categoryName}`);
+    }
+    if (filters.tagId) {
+        const tagFilter = document.getElementById('tag-filter');
+        const tagName = tagFilter?.selectedOptions[0]?.text || '未知标签';
+        filterConditions.push(`标签: ${tagName}`);
+    }
+    if (filters.keyword) {
+        filterConditions.push(`关键词: "${filters.keyword}"`);
+    }
+
+    if (filterConditions.length > 0) {
+        infoText += ` (筛选条件: ${filterConditions.join(', ')})`;
+    }
+
+    if (totalPages > 1) {
+        infoText += ` | 第 ${currentPage} 页，共 ${totalPages} 页`;
+    }
+
+    filterResultsInfo.textContent = infoText;
+}
+
+// 页面加载时初始化筛选功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 延迟初始化，确保页面元素已加载
+    setTimeout(initFilters, 100);
+});

@@ -45,6 +45,9 @@ public interface BlogService {
     // 分页查询博客
     Map<String, Object> findByPage(int pageNum, int pageSize, Long categoryId, Long userId, String keyword);
     
+    // 按标签分页查询博客
+    Map<String, Object> findByTagIdWithPage(int pageNum, int pageSize, Long tagId);
+    
     // 更新博客标签关联
     void updateBlogTags(Long blogId, List<Tag> tags);
 }

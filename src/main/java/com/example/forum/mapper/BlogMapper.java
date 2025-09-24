@@ -52,5 +52,11 @@ public interface BlogMapper {
     
     // 根据ID查询博客（包含标签）
     Blog findByIdWithTags(@Param("id") Long id);
+    
+    // 按标签分页查询博客
+    List<Blog> findByTagIdWithPage(@Param("offset") int offset, @Param("pageSize") int pageSize, @Param("tagId") Long tagId);
+    
+    // 按标签查询博客总数
+    int countByTagId(@Param("tagId") Long tagId);
 }
     

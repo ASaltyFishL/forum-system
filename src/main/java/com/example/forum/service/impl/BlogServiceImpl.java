@@ -200,6 +200,22 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public Map<String, Object> findByTagIdWithPage(int pageNum, int pageSize, Long tagId) {
+        int offset = (pageNum - 1) * pageSize;
+        List<Blog> blogs = blogMapper.findByTagIdWithPage(offset, pageSize, tagId);
+        int total = blogMapper.countByTagId(tagId);
+        
+        Map<String, Object> result = new HashMap<>();
+        result.put("data", blogs);
+        result.put("total", total);
+        result.put("pageNum", pageNum);
+        result.put("pageSize", pageSize);
+        result.put("totalPages", (total + pageSize - 1) / pageSize);
+        
+        return result;
+    }
+
+    @Override
     @Transactional
     public void updateBlogTags(Long blogId, List<Tag> tags) {
         // 先删除原有的标签关联

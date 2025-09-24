@@ -94,6 +94,54 @@
                 </button>
             </div>
 
+            <!-- 筛选区域 -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">筛选博客</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- 分类筛选 -->
+                    <div>
+                        <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-2">按分类筛选</label>
+                        <select id="category-filter" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">全部分类</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 标签筛选 -->
+                    <div>
+                        <label for="tag-filter" class="block text-sm font-medium text-gray-700 mb-2">按标签筛选</label>
+                        <select id="tag-filter" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">全部标签</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 搜索框 -->
+                    <div>
+                        <label for="search-input" class="block text-sm font-medium text-gray-700 mb-2">搜索博客</label>
+                        <div class="relative">
+                            <input type="text" id="search-input" class="w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="输入关键词搜索...">
+                            <button id="search-btn" class="absolute right-2 top-2 text-gray-400 hover:text-gray-600">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 筛选操作按钮 -->
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex space-x-2">
+                        <button id="clear-filters" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded transition-colors">
+                            <i class="fa fa-refresh mr-2"></i>清除筛选
+                        </button>
+                        <button id="apply-filters" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
+                            <i class="fa fa-filter mr-2"></i>应用筛选
+                        </button>
+                    </div>
+                    <div id="filter-results-info" class="text-sm text-gray-500">
+                        <!-- 筛选结果信息将在这里显示 -->
+                    </div>
+                </div>
+            </div>
+
             <div id="blogs-container" class="space-y-4">
                 <!-- 博客将通过JavaScript动态加载 -->
                 <div class="text-center text-gray-500 py-10">
@@ -204,11 +252,10 @@
                         </div>
                         <div class="mb-4">
                             <label for="topic-tags" class="block text-gray-700 mb-2">标签</label>
-                            <div id="topic-tags-container" class="border border-gray-300 rounded-md p-3 min-h-[50px]">
-                                <div class="flex flex-wrap gap-2" id="selected-tags"></div>
-                                <input type="text" id="tag-input" class="w-full border-none outline-none" placeholder="输入标签名称，按回车添加">
-                            </div>
-                            <div id="available-tags" class="mt-2 flex flex-wrap gap-2"></div>
+                            <select id="topic-tags" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" multiple>
+                                <option value="">请选择标签（可多选）</option>
+                            </select>
+                            <p class="text-sm text-gray-500 mt-1">按住Ctrl键可多选标签</p>
                         </div>
                         <div class="mb-6">
                             <label for="topic-content" class="block text-gray-700 mb-2">内容</label>
@@ -246,11 +293,10 @@
                         </div>
                         <div class="mb-4">
                             <label for="update-topic-tags" class="block text-gray-700 mb-2">标签</label>
-                            <div id="update-topic-tags-container" class="border border-gray-300 rounded-md p-3 min-h-[50px]">
-                                <div class="flex flex-wrap gap-2" id="update-selected-tags"></div>
-                                <input type="text" id="update-tag-input" class="w-full border-none outline-none" placeholder="输入标签名称，按回车添加">
-                            </div>
-                            <div id="update-available-tags" class="mt-2 flex flex-wrap gap-2"></div>
+                            <select id="update-topic-tags" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" multiple>
+                                <option value="">请选择标签（可多选）</option>
+                            </select>
+                            <p class="text-sm text-gray-500 mt-1">按住Ctrl键可多选标签</p>
                         </div>
                         <div class="mb-6">
                             <label for="update-topic-content" class="block text-gray-700 mb-2">内容</label>

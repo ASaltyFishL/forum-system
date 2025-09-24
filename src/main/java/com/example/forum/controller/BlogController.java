@@ -42,9 +42,18 @@ public class BlogController {
             @RequestParam(defaultValue = "10") int pageSize, 
             @RequestParam(required = false) Long categoryId, 
             @RequestParam(required = false) Long userId, 
-            @RequestParam(required = false) String keyword) {
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) Long tagId) {
         
-        Map<String, Object> pageInfo = blogService.findByPage(pageNum, pageSize, categoryId, userId, keyword);
+        Map<String, Object> pageInfo;
+        if (tagId != null) {
+            // 如果指定了标签ID，使用标签筛选
+            pageInfo = blogService.findByTagIdWithPage(pageNum, pageSize, tagId);
+        } else {
+            // 否则使用普通分页查询
+            pageInfo = blogService.findByPage(pageNum, pageSize, categoryId, userId, keyword);
+        }
+        
         Map<String, Object> result = new HashMap<>();
         result.put("pageInfo", pageInfo);
         result.put("categories", categoryService.findAll());
