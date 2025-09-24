@@ -14,26 +14,49 @@
         <result column="published" property="published"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <result column="username" property="username"/>
+        <result column="category_name" property="categoryName"/>
     </resultMap>
     
     <select id="findAll" resultMap="BaseResultMap">
-        SELECT * FROM blog ORDER BY create_time DESC
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b 
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        ORDER BY b.create_time DESC
     </select>
     
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM blog WHERE id = #{id}
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b 
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        WHERE b.id = #{id}
     </select>
     
     <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM blog WHERE user_id = #{userId} ORDER BY create_time DESC
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b 
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        WHERE b.user_id = #{userId} 
+        ORDER BY b.create_time DESC
     </select>
     
     <select id="findByCategoryId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT * FROM blog WHERE category_id = #{categoryId} ORDER BY create_time DESC
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b 
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
+        WHERE b.category_id = #{categoryId} 
+        ORDER BY b.create_time DESC
     </select>
     
     <select id="findByTagId" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        SELECT b.* FROM blog b
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
         JOIN blog_tag bt ON b.id = bt.blog_id
         WHERE bt.tag_id = #{tagId}
         ORDER BY b.create_time DESC
@@ -72,33 +95,36 @@
     </delete>
     
     <select id="findByPage" resultMap="BaseResultMap" parameterType="map">
-        SELECT * FROM blog
+        SELECT b.*, u.username, c.name as category_name 
+        FROM blog b
+        LEFT JOIN user u ON b.user_id = u.id 
+        LEFT JOIN category c ON b.category_id = c.id 
         <where>
             <if test="categoryId != null">
-                AND category_id = #{categoryId}
+                AND b.category_id = #{categoryId}
             </if>
             <if test="userId != null">
-                AND user_id = #{userId}
+                AND b.user_id = #{userId}
             </if>
             <if test="keyword != null and keyword != ''">
-                AND (title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%'))
+                AND (b.title LIKE CONCAT('%', #{keyword}, '%') OR b.content LIKE CONCAT('%', #{keyword}, '%'))
             </if>
         </where>
-        ORDER BY create_time DESC
+        ORDER BY b.create_time DESC
         LIMIT #{offset}, #{pageSize}
     </select>
 
     <select id="countByPage" resultType="java.lang.Integer" parameterType="map">
-        SELECT COUNT(*) FROM blog
+        SELECT COUNT(*) FROM blog b
         <where>
             <if test="categoryId != null">
-                AND category_id = #{categoryId}
+                AND b.category_id = #{categoryId}
             </if>
             <if test="userId != null">
-                AND user_id = #{userId}
+                AND b.user_id = #{userId}
             </if>
             <if test="keyword != null and keyword != ''">
-                AND (title LIKE CONCAT('%', #{keyword}, '%') OR content LIKE CONCAT('%', #{keyword}, '%'))
+                AND (b.title LIKE CONCAT('%', #{keyword}, '%') OR b.content LIKE CONCAT('%', #{keyword}, '%'))
             </if>
         </where>
     </select>

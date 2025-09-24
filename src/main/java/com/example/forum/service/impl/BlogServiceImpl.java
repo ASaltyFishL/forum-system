@@ -56,6 +56,20 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Blog create(Blog blog) {
+        // 验证必要字段
+        if (blog.getUserId() == null) {
+            throw new RuntimeException("用户ID不能为空");
+        }
+        if (blog.getCategoryId() == null) {
+            throw new RuntimeException("分类ID不能为空");
+        }
+        if (blog.getTitle() == null || blog.getTitle().trim().isEmpty()) {
+            throw new RuntimeException("博客标题不能为空");
+        }
+        if (blog.getContent() == null || blog.getContent().trim().isEmpty()) {
+            throw new RuntimeException("博客内容不能为空");
+        }
+        
         // 确保日期字段有值
         Date now = new Date();
         if (blog.getCreateTime() == null) {

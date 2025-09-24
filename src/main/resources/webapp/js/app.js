@@ -86,8 +86,8 @@ function showPage(pageName) {
                     throw new Error('获取博客列表失败');
                 })
                 .then(data => {
-                    if (data.success && data.data && data.data.length > 0) {
-                        blogId = data.data[0].id;
+                    if (data.success && data.data && data.data.pageInfo && data.data.pageInfo.data && data.data.pageInfo.data.length > 0) {
+                        blogId = data.data.pageInfo.data[0].id;
                         localStorage.setItem('currentBlogId', blogId);
                         loadBlogDetail(blogId);
                     } else {

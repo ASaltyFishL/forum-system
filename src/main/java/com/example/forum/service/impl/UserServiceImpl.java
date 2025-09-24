@@ -75,6 +75,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUsername(String username) {
+        User user = userMapper.findByUsername(username);
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        ensureUserHasCompleteData(user);
+        return user;
+    }
+
+    @Override
     public List<User> findAll() {
         List<User> users = userMapper.findAll();
         for (User user : users) {
@@ -128,7 +138,9 @@ public class UserServiceImpl implements UserService {
         return true;
     }
     
-    // 确保用户对象有完整的数据
+    /**
+     * 确保用户对象有完整的数据
+     */
     private void ensureUserHasCompleteData(User user) {
         if (user.getId() == null) {
             logger.error("用户ID为null: {}", user);

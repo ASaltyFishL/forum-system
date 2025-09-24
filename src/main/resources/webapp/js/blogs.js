@@ -94,7 +94,7 @@ function handleCreateBlog() {
 
     showLoading('正在发布...');
 
-    fetch(`/api/blogs?userId=${userId}`, {
+    fetch('/api/blogs', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,6 +102,7 @@ function handleCreateBlog() {
         body: JSON.stringify({
             title: title,
             content: content,
+            userId: userId, // 添加userId字段
             categoryId: 1, // 默认分类ID，后续可以改进为用户选择
             summary: content.substring(0, 100) + '...', // 自动生成摘要
             tags: [] // 暂时为空数组，后续可以添加标签功能
@@ -155,7 +156,7 @@ function handleUpdateBlog() {
 
     showLoading('正在更新...');
 
-    fetch(`/api/blogs/${blogId}?userId=${userId}`, {
+    fetch(`/api/blogs/${blogId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -163,6 +164,7 @@ function handleUpdateBlog() {
         body: JSON.stringify({
             title: title,
             content: content,
+            userId: userId, // 添加userId字段
             categoryId: 1, // 默认分类ID
             summary: content.substring(0, 100) + '...', // 自动生成摘要
             tags: [] // 暂时为空数组
@@ -206,7 +208,7 @@ function deleteBlog(blogId) {
     
     showLoading('正在删除...');
     
-    fetch(`/api/blogs/${blogId}?userId=${userId}`, {
+    fetch(`/api/blogs/${blogId}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -263,9 +265,9 @@ function loadBlogs() {
             console.log('博客列表数据:', data);
             if (data.success) {
                 console.log('分页信息:', data.data);
-                console.log('博客数量:', data.data.data.length);
-                console.log('博客详情:', data.data.data);
-                renderBlogs(data.data.data);
+                console.log('博客数量:', data.data.pageInfo.data.length);
+                console.log('博客详情:', data.data.pageInfo.data);
+                renderBlogs(data.data.pageInfo.data);
             } else {
                 throw new Error(data.message || '获取博客列表失败');
             }
@@ -420,7 +422,7 @@ function loadBlogDetail(blogId) {
             console.log('博客详情数据:', data);
             if (data.success) {
                 console.log('成功获取博客详情，准备渲染:', data.data);
-                renderBlogDetail(data.data);
+                renderBlogDetail(data.data.blog);
             } else {
                 throw new Error(data.message || '加载博客详情失败');
             }

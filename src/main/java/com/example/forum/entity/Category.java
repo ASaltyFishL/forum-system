@@ -1,38 +1,37 @@
 package com.example.forum.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 分类实体类
+ */
 @Data
-@Entity
-@Table(name = "category")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "分类名称不能为空")
-    @Column(nullable = false, unique = true)
     private String name;
 
-    @Column
     private String description;
 
-    @Column(nullable = false)
     private Date createTime;
 
-    @Column(nullable = false)
     private Date updateTime;
 
-    // 默认构造函数
-    public Category() {
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
         this.createTime = new Date();
         this.updateTime = new Date();
     }

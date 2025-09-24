@@ -1,5 +1,6 @@
 package com.example.forum.controller;
 
+import com.example.forum.common.Result;
 import com.example.forum.entity.Blog;
 import com.example.forum.service.BlogService;
 import com.example.forum.service.CategoryService;
@@ -10,9 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 博客控制器
+ */
 @RestController
 @RequestMapping("/api/blogs")
 public class BlogController {
@@ -32,113 +37,75 @@ public class BlogController {
     private TagService tagService;
 
     @GetMapping
-    public Map<String, Object> list(
+    public Result<Map<String, Object>> list(
             @RequestParam(defaultValue = "1") int pageNum, 
             @RequestParam(defaultValue = "10") int pageSize, 
             @RequestParam(required = false) Long categoryId, 
             @RequestParam(required = false) Long userId, 
             @RequestParam(required = false) String keyword) {
+        
+        Map<String, Object> pageInfo = blogService.findByPage(pageNum, pageSize, categoryId, userId, keyword);
         Map<String, Object> result = new HashMap<>();
-        try {
-            Map<String, Object> pageInfo = blogService.findByPage(pageNum, pageSize, categoryId, userId, keyword);
-            result.put("success", true);
-            result.put("message", "获取成功");
-            result.put("data", pageInfo);
-            result.put("categories", categoryService.findAll());
-        } catch (Exception e) {
-            logger.error("获取博客列表失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
-        }
-        return result;
+        result.put("pageInfo", pageInfo);
+        result.put("categories", categoryService.findAll());
+        
+        return Result.success("获取成功", result);
     }
 
     @GetMapping("/{id}")
-    public Map<String, Object> get(@PathVariable Long id) {
+    public Result<Map<String, Object>> get(@PathVariable Long id) {
+        Blog blog = blogService.findById(id);
+        // 增加浏览量
+        blogService.incrementViewCount(id);
+        
         Map<String, Object> result = new HashMap<>();
-        try {
-            Blog blog = blogService.findById(id);
-            // 增加浏览量
-            blogService.incrementViewCount(id);
-            result.put("success", true);
-            result.put("message", "获取成功");
-            result.put("data", blog);
-            result.put("tags", tagService.findByBlogId(id));
-        } catch (Exception e) {
-            logger.error("获取博客详情失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
-        }
-        return result;
+        result.put("blog", blog);
+        result.put("tags", tagService.findByBlogId(id));
+        
+        return Result.success("获取成功", result);
     }
 
     @PostMapping
-    public Map<String, Object> create(@RequestBody Blog blog) {
-        Map<String, Object> result = new HashMap<>();
+    public Result<Blog> create(@Valid @RequestBody Blog blog) {
         try {
+            // 验证必要字段
+            if (blog.getUserId() == null) {
+                return Result.error("用户ID不能为空");
+            }
+            if (blog.getCategoryId() == null) {
+                return Result.error("分类ID不能为空");
+            }
+            
             Blog createdBlog = blogService.create(blog);
-            logger.info("保存博客成功: {}", blog);
-            result.put("success", true);
-            result.put("message", "创建成功");
-            result.put("data", createdBlog);
+            logger.info("创建博客成功: {}", createdBlog);
+            return Result.success("创建成功", createdBlog);
         } catch (Exception e) {
-            logger.error("保存博客失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
+            logger.error("创建博客失败: {}", e.getMessage(), e);
+            return Result.error("创建博客失败: " + e.getMessage());
         }
-        return result;
     }
 
     @PutMapping("/{id}")
-    public Map<String, Object> update(@PathVariable Long id, @RequestBody Blog blog) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            blog.setId(id);
-            Blog updatedBlog = blogService.update(blog);
-            logger.info("更新博客成功: {}", blog);
-            result.put("success", true);
-            result.put("message", "更新成功");
-            result.put("data", updatedBlog);
-        } catch (Exception e) {
-            logger.error("更新博客失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
-        }
-        return result;
+    public Result<Blog> update(@PathVariable Long id, @Valid @RequestBody Blog blog) {
+        blog.setId(id);
+        Blog updatedBlog = blogService.update(blog);
+        logger.info("更新博客成功: {}", blog);
+        return Result.success("更新成功", updatedBlog);
     }
     
     @GetMapping("/{id}/comments")
-    public Map<String, Object> getCommentsByBlogId(@PathVariable Long id) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            // 检查博客是否存在
-            blogService.findById(id);
-            // 获取评论列表
-            result.put("success", true);
-            result.put("message", "获取成功");
-            result.put("data", commentService.findByBlogId(id));
-        } catch (Exception e) {
-            logger.error("获取博客评论失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
-        }
-        return result;
+    public Result<Object> getCommentsByBlogId(@PathVariable Long id) {
+        // 检查博客是否存在
+        blogService.findById(id);
+        // 获取评论列表
+        return Result.success("获取成功", commentService.findByBlogId(id));
     }
 
     @DeleteMapping("/{id}")
-    public Map<String, Object> delete(@PathVariable Long id) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            blogService.delete(id);
-            logger.info("删除博客成功: {}", id);
-            result.put("success", true);
-            result.put("message", "删除成功");
-        } catch (Exception e) {
-            logger.error("删除博客失败: {}", e.getMessage());
-            result.put("success", false);
-            result.put("message", e.getMessage());
-        }
-        return result;
+    public Result<Void> delete(@PathVariable Long id) {
+        blogService.delete(id);
+        logger.info("删除博客成功: {}", id);
+        return Result.success("删除成功", null);
     }
 }
     

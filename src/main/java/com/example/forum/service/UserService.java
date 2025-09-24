@@ -14,6 +14,9 @@ public interface UserService {
     // 根据ID查询用户
     User findById(Long userId);
     
+    // 根据用户名查询用户
+    User findByUsername(String username);
+    
     // 查询所有用户
     List<User> findAll();
     
